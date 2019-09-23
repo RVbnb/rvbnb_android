@@ -12,10 +12,15 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // When user clicks on Sign-In button it will take user to Homepage.
-        btn_signin.setOnClickListener {
-            var signInIntent = Intent(this, MainActivity::class.java)
-            startActivity(signInIntent)
+        // When user clicks on Log-In button it will take user to Homepage.
+        btn_login.setOnClickListener {
+            if (cb_landowner.isChecked) {
+                var logLandownerIntent = Intent(this, LandownerActivity::class.java)
+                startActivity(logLandownerIntent)
+            } else {
+                var logRVOwnerIntent = Intent(this, RVOwnerActivity::class.java)
+                startActivity(logRVOwnerIntent)
+            }
         }
 
         // When user clicks on Register button it will take user to Registration Page.

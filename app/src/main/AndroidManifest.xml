@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_rvbnb_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.LandownerActivity"></activity>
+        <activity android:name=".ui.RVOwnerActivity"></activity>
+        <activity android:name=".ui.LandownerActivity" />
         <activity
             android:name=".ui.RegisterActivity"
             android:label="Register" />
