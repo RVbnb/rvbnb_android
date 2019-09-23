@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RVbnb.iml" filepath="$PROJECT_DIR$/RVbnb.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/rvbnb_android-app.iml" filepath="$PROJECT_DIR$/app/rvbnb_android-app.iml" />
     </modules>
   </component>
 </project>
