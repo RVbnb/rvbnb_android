@@ -62,7 +62,7 @@
 
     <TextView
         android:id="@+id/tv_login_as"
-        android:text="Login As:"
+        android:text="Log In As:"
         style="@style/tv_login_register"
         app:layout_constraintTop_toBottomOf="@id/et_password"
         app:layout_constraintLeft_toLeftOf="parent" />
