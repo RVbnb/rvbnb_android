@@ -86,8 +86,8 @@
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <Button
-        android:id="@+id/btn_signin"
-        android:text="Sign In"
+        android:id="@+id/btn_login"
+        android:text="Log In"
         style="@style/button"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@id/btn_register"
