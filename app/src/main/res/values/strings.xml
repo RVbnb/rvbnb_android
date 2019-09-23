@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RVbnb</string>
+    <string name="username">User Name</string>
+    <string name="password">Password</string>
 </resources>
