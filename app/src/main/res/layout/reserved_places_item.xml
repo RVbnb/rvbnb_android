@@ -3,13 +3,29 @@
     android:id="@+id/llayout_reserved_places"
     android:layout_margin="4dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/text_placeholder"
-        android:layout_margin="4dp"
+        android:id="@+id/text_name"
+        android:layout_margin="8dp"
+        android:textSize="16sp"
+        android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:paddingLeft="8dp"
+        android:layout_margin="8dp"
+        android:textSize="16sp"
+        android:text="Dates Reserved:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/text_date"
+        android:layout_margin="8dp"
         android:textSize="16sp"
         android:text="@string/app_name"
         android:layout_width="wrap_content"

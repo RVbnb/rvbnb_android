@@ -7,12 +7,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rvbnb.R
 import com.example.rvbnb.model.Plot
+import com.example.rvbnb.model.TimeSlot
 import kotlinx.android.synthetic.main.reserved_places_item.view.*
 
 class ReservedPlacesAdapter(private val reservedPlaces: MutableList<Plot>): RecyclerView.Adapter<ReservedPlacesAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
-        val text: TextView = view.text_placeholder
+        val textName: TextView = view.text_name
+        val textDate: TextView = view.text_date
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,8 +26,15 @@ class ReservedPlacesAdapter(private val reservedPlaces: MutableList<Plot>): Recy
     override fun getItemCount(): Int = reservedPlaces.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var place = reservedPlaces[position]
+        val place = reservedPlaces[position]
 
-        holder.text.text = place.name
+        holder.textName.text = place.name
+
+        if (place.timeSlots[1].date == place.timeSlots[0].date){
+            holder.textDate.text = place.timeSlots[0].date
+        }else{
+            val string = place.timeSlots[0].date + " to " + place.timeSlots[1].date
+            holder.textDate.text = string
+        }
     }
 }
