@@ -1,7 +1,8 @@
-package com.example.rvbnb
+package com.example.rvbnb.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.rvbnb.R
 
 class MainActivity : AppCompatActivity() {
 
