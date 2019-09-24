@@ -16,7 +16,6 @@ class RegisterActivity : AppCompatActivity() {
         btn_submit.setOnClickListener {
 
             // Need to pass registration information to Profile Page.
-
             var registrationIntent = Intent(this, LoginActivity::class.java)
             startActivity(registrationIntent)
         }
