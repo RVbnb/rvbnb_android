@@ -1,6 +1,8 @@
 package com.example.rvbnb.ui
 
+import android.app.DatePickerDialog
 import android.content.Intent
+import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.rvbnb.R
@@ -20,9 +22,8 @@ class CreateListingActivity : AppCompatActivity() {
         iv_listing.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
-            if (intent.resolveActivity(packageManager) != null) {
-                startActivityForResult(intent, REQUEST_IMAGE_GET)
-            }
+            startActivityForResult(intent, REQUEST_IMAGE_GET)
+
         }
 
         // When users clicks on Add Listing, user will be brought back to the Homepage.

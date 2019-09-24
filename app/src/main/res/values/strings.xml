@@ -2,7 +2,7 @@
     <string name="app_name">RVbnb</string>
     <string name="username">User Name</string>
     <string name="password">Password</string>
-    <string name="listing_name">Plot Name:</string>
+    <string name="listing_name">Land Name:</string>
     <string name="listing_address">Address:</string>
     <string name ="listing_description">Description:</string>
     <string name="listing_availability">Availability:</string>
