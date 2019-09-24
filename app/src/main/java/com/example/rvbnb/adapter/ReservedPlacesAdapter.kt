@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rvbnb.R
-import com.example.rvbnb.model.Plot
+import com.example.rvbnb.model.Land
 import kotlinx.android.synthetic.main.reserved_places_item.view.*
 
-class ReservedPlacesAdapter(private val reservedPlaces: MutableList<Plot>): RecyclerView.Adapter<ReservedPlacesAdapter.ViewHolder>() {
+class ReservedPlacesAdapter(private val reservedPlaces: MutableList<Land>): RecyclerView.Adapter<ReservedPlacesAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val textName: TextView = view.text_name
@@ -29,10 +29,10 @@ class ReservedPlacesAdapter(private val reservedPlaces: MutableList<Plot>): Recy
 
         holder.textName.text = place.name
 
-        if (place.timeSlots[1].date == place.timeSlots[0].date){
-            holder.textDate.text = place.timeSlots[0].date
+        if (place.timeSlot.date != null){
+            holder.textDate.text = place.timeSlot.date
         }else{
-            val dateRange = place.timeSlots[0].date + " to " + place.timeSlots[1].date
+            val dateRange = place.timeSlot.startDate + " to " + place.timeSlot.endDate
             holder.textDate.text = dateRange
         }
     }

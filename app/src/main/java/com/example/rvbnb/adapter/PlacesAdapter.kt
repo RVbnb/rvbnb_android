@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rvbnb.R
-import com.example.rvbnb.model.Plot
+import com.example.rvbnb.model.Land
 import kotlinx.android.synthetic.main.places_item.view.*
 
-class PlacesAdapter(private val reservedPlaces: MutableList<Plot>): RecyclerView.Adapter<PlacesAdapter.ViewHolder>() {
+class PlacesAdapter(private val reservedPlaces: MutableList<Land>): RecyclerView.Adapter<PlacesAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val text: TextView = view.text_place
