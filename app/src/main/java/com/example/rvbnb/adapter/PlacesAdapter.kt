@@ -1,9 +1,9 @@
 package com.example.rvbnb.adapter
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rvbnb.R
 import com.example.rvbnb.model.Land
@@ -13,9 +13,9 @@ class PlacesAdapter(private val listPlaces: MutableList<Land>): RecyclerView.Ada
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         //val landName: TextView = view.tv_listing_name_listview
-        //val landPicture: Picasso.get().load(land.photo).into(iv_listing_listview)
-        var landLocation: TextView = view.tv_listing_address_listview
-        var landDescription: TextView = view.tv_listing_description_listview
+        val landPicture = view.iv_listing_listview
+        var landLocation = view.tv_listing_address_listview
+        var landDescription = view.tv_listing_description_listview
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,7 +30,8 @@ class PlacesAdapter(private val listPlaces: MutableList<Land>): RecyclerView.Ada
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val place = listPlaces[position]
-//        holder.landLocation = place.location
-//        holder.landDescription = place.description
+        holder.landPicture.setImageURI(Uri.parse(place.photo))
+        holder.landLocation.text = place.location
+        holder.landDescription.text = place.description
     }
 }
