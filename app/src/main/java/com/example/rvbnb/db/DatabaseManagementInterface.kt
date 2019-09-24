@@ -3,9 +3,8 @@ package com.example.rvbnb.db
 interface DatabaseManagementInterface {
     fun createUsersAccounts()
     fun updateUserProfile()
-    fun deleteUsersAccounts()
-    fun addPlot()
-    fun updatePlot()
-    fun removePlot()
-    fun cancelRequest()
+    fun addLand()
+    fun updateLand()
+    fun removeLand()
+    fun cancelReserve()
 }
