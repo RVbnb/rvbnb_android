@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rvbnb.R
-import com.example.rvbnb.model.Plot
+import com.example.rvbnb.model.Land
 import kotlinx.android.synthetic.main.reserved_places_item.view.*
 
-class ReservedPlacesAdapter(private val reservedPlaces: MutableList<Plot>): RecyclerView.Adapter<ReservedPlacesAdapter.ViewHolder>() {
+class ReservedPlacesAdapter(private val username: String,
+                            private val reservedPlaces: MutableList<Land>):
+    RecyclerView.Adapter<ReservedPlacesAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val textName: TextView = view.text_name
@@ -29,11 +31,16 @@ class ReservedPlacesAdapter(private val reservedPlaces: MutableList<Plot>): Recy
 
         holder.textName.text = place.name
 
-        if (place.timeSlots[1].date == place.timeSlots[0].date){
-            holder.textDate.text = place.timeSlots[0].date
-        }else{
-            val dateRange = place.timeSlots[0].date + " to " + place.timeSlots[1].date
-            holder.textDate.text = dateRange
+        //Setup reserved date(s) to be displayed in Recycler Item.
+        place.timeSlot?.forEach {
+            if (it.userName == username){
+                if (it.date != null){
+                    holder.textDate.text = it.date
+                }else{
+                    val dateRange = it.startDate + " to " + it.endDate
+                    holder.textDate.text = dateRange
+                }
+            }
         }
     }
 }
