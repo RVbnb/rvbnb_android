@@ -29,7 +29,7 @@ class ReservedPlacesAdapter(private val username: String,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val place = reservedPlaces[position]
 
-        holder.textName.text = place.name
+        holder.textName.text = place.id.toString()
 
         //Setup reserved date(s) to be displayed in Recycler Item.
         /*place.timeSlot?.forEach {

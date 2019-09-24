@@ -26,6 +26,6 @@ class PlacesAdapter(private val reservedPlaces: MutableList<Land>): RecyclerView
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var place = reservedPlaces[position]
 
-        holder.text.text = place.name
+        holder.text.text = place.id.toString()
     }
 }

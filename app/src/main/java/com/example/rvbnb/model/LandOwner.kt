@@ -4,20 +4,22 @@ import android.graphics.Bitmap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-class LandOwner(val userName: String,
+class LandOwner(val username: String,
                 val password: String,
+                val is_land_owner: Boolean,
                 var displayName: String,
                 var reserveRequests: MutableList<Land>,
                 var acceptedReservations: MutableList<Land>)
 
 @Entity
-class Land(var name: String,
-           var address: String,
-           @PrimaryKey
-           var ownerId: String,
-           var costPerDay: String,
-           var picture: String, //Change to Url once grabbed
-           var dates: String/*, //TODO: this variable type needs to be changed?
+class Land(@PrimaryKey
+           var id: Int,
+           var owner_id: String,
+           var location: String,
+           var description: String,
+           var price_per_day: String,
+           var photo: String/*, //Change to Url once grabbed
+           var dates: String, //TODO: this variable type needs to be changed?
            var timeSlot: MutableList<TimeSlot>?*/) //Made timeSlot nullable so LandOwners can add
                                                  //Land without reserving timeSlots
 
