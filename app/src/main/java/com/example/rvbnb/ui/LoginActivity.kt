@@ -17,14 +17,17 @@ class LoginActivity : AppCompatActivity() {
         btn_login.setOnClickListener {
 
             // If the Check Box for Landowner is checked, it will take user to the Landowner Homepage.
-            if (cb_landowner.isChecked) {
+            if (cb_landowner.isChecked && !cb_rvowner.isChecked) {
                 var logLandownerIntent = Intent(this, LandownerActivity::class.java)
                 startActivity(logLandownerIntent)
                 // If the Check Box for RV Owner is checked, it will take user to the RV Owner Homepage.
-            } else if (cb_rvowner.isChecked) {
+            } else if (cb_rvowner.isChecked && !cb_landowner.isChecked) {
                 var logRVOwnerIntent = Intent(this, RVOwnerActivity::class.java)
                 startActivity(logRVOwnerIntent)
-                // If neither Check Boxes are selected, it will not take the user to the Homepage.
+                // If both Check Boxes are selected, it will make a Toast and not take the user to the Homepage.
+            } else if (cb_landowner.isChecked && cb_rvowner.isChecked) {
+                Toast.makeText(this, "Please only select one", Toast.LENGTH_LONG).show()
+                // If neither Check Boxes are selected, it will make a Toast and not take the user to the Homepage.
             } else {
                 Toast.makeText(this, "Please select Landowner or RV Owner", Toast.LENGTH_LONG).show()
             }
