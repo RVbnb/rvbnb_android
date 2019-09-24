@@ -1,10 +1,22 @@
 package com.example.rvbnb.repo
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.example.rvbnb.db.DatabaseManagementInterface
 import com.example.rvbnb.db.LandDB
 import com.example.rvbnb.model.Land
+
+class App: Application(){
+    companion object{
+        var repository: DatabaseManagementInterface? = null
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        repository = LandRepo(applicationContext)
+    }
+}
 
 class LandRepo(context: Context): DatabaseManagementInterface {
     private val landDatabase by lazy {
