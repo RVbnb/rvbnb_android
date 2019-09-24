@@ -8,18 +8,22 @@ import retrofit2.http.*
 
 interface RvApi {
     @POST("/api/auth/register")
-    fun registerUser(@Body user: UserAccount)//: Call<UserAccount>
+    fun registerUser(@Body user: UserAccount): Call<Void>
 
     @POST("/api/auth/login")
     fun loginUser(@Body user: UserAccount): Call<AcceptResponse>
 
     @POST(" /api/listings")
     fun registerLand(@Body land: Land,
-                     @Header("Authorization")token: String): Call<Land>
+                     @Header("Authorization")token: String): Call<Void>
 
     @GET("/api/listings")
     fun getLands(@Header("Authorization")token: String): Call<MutableList<Land>>
 
+    @PUT("/api/listings/{id}")
+    fun updateLand(@Body land: Land): Call<Void>
 
+    @DELETE("/api/listings/{id}")
+    fun deleteListingById(@Path("id")id: String): Call<Void>
 
 }
