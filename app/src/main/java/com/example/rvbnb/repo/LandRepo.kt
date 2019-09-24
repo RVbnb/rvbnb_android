@@ -28,7 +28,7 @@ class LandRepo(context: Context): DatabaseManagementInterface {
         return landDatabase.rvDao().buildLandList()
     }
 
-    override fun createUsersAccounts() {
+    override fun createUserAccount() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
