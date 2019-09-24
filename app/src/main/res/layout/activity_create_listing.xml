@@ -17,24 +17,24 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
-    <TextView
+    <!-- <TextView
         android:id="@+id/tv_listing_name"
         android:text="@string/listing_name"
         style="@style/tv_login_register"
         app:layout_constraintTop_toBottomOf="@+id/iv_listing"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"/> -->
 
-    <EditText
+    <!-- <EditText
         android:id="@+id/et_listing_name"
         style="@style/et_box"
         app:layout_constraintTop_toBottomOf="@id/tv_listing_name"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"/> -->
 
     <TextView
         android:id="@+id/tv_listing_address"
         android:text="@string/listing_address"
         style="@style/tv_login_register"
-        app:layout_constraintTop_toBottomOf="@+id/et_listing_name"
+        app:layout_constraintTop_toBottomOf="@+id/iv_listing"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <EditText
