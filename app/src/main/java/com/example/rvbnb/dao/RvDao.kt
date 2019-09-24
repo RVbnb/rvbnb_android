@@ -9,11 +9,11 @@ interface RvDao {
     fun buildLandList(): MutableList<Land>
 
     @Insert
-    fun addLand()
+    fun addLand(land: Land)
 
     @Update
-    fun updateLand()
+    fun updateLand(land: Land)
 
     @Delete
-    fun removeLand()
+    fun removeLand(land: Land)
 }
