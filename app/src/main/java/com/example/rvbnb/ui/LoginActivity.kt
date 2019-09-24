@@ -13,7 +13,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // When user clicks on Log-In button it will take user to Homepage.
+        // When user clicks on Log-In button, it will take user to Homepage.
         btn_login.setOnClickListener {
 
             // If the Check Box for Landowner is checked, it will take user to the Landowner Homepage.
