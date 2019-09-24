@@ -18,12 +18,11 @@ interface RvApi {
                      @Header("Authorization")token: String): Call<Void>
 
     @GET("/api/listings")
-    fun getLands(@Header("Authorization")token: String): Call<MutableList<Land>>
+    fun getLandList(@Header("Authorization")token: String): Call<MutableList<Land>>
 
     @PUT("/api/listings/{id}")
     fun updateLand(@Body land: Land): Call<Void>
 
     @DELETE("/api/listings/{id}")
-    fun deleteListingById(@Path("id")id: String): Call<Void>
-
+    fun deleteLandListingById(@Path("id")id: String): Call<Void>
 }
