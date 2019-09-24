@@ -14,6 +14,8 @@ class RegisterActivity : AppCompatActivity() {
 
         // When user clicks on Submit button it will take user back to Login Page to login.
         btn_submit.setOnClickListener {
+
+            // Need to pass registration information to Profile Page.
             var registrationIntent = Intent(this, LoginActivity::class.java)
             startActivity(registrationIntent)
         }
