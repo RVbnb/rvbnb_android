@@ -15,8 +15,14 @@ class LandownerActivity : AppCompatActivity() {
 
         // When user clicks on Profile Button, it will take user to Profile Page.
         btn_user_profile.setOnClickListener {
-            var profileIntent = Intent(this, ProfileActivity::class.java)
+            val profileIntent = Intent(this, ProfileActivity::class.java)
             startActivity(profileIntent)
+        }
+
+        // When user clicks on + Button, it will take user to Create Listing Page.
+        iv_add.setOnClickListener {
+            val addIntent = Intent(this, CreateListingActivity::class.java)
+            startActivity(addIntent)
         }
     }
 }
