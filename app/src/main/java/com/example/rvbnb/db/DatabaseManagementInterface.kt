@@ -4,7 +4,7 @@ import com.example.rvbnb.model.Land
 
 interface DatabaseManagementInterface {
     fun buildLandList(): MutableList<Land>
-    fun createUsersAccounts()
+    fun createUserAccount()
     fun updateUserProfile()
     fun addLand(land: Land)
     fun updateLand(land: Land)
