@@ -1,23 +1,22 @@
 package com.example.rvbnb.model
 
-import android.graphics.Bitmap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 class LandOwner(val username: String,
                 val password: String,
                 val is_land_owner: Boolean,
-                var displayName: String,
-                var reserveRequests: MutableList<Land>,
-                var acceptedReservations: MutableList<Land>)
+                var reservedLands: MutableList<Land>?)
+
+class AcceptResponse(val token: String, val id: Int)
 
 @Entity
 class Land(@PrimaryKey
            var id: Int,
-           var owner_id: String,
+           var owner_id: Int,
            var location: String,
            var description: String,
-           var price_per_day: String,
+           var price_per_day: Double,
            var photo: String/*, //Change to Url once grabbed
            var dates: String, //TODO: this variable type needs to be changed?
            var timeSlot: MutableList<TimeSlot>?*/) //Made timeSlot nullable so LandOwners can add
