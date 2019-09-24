@@ -16,9 +16,9 @@ class Land(var name: String,
            @PrimaryKey
            var ownerId: String,
            var costPerDay: String,
-           var picture: Bitmap,
-           var dates: String, //TODO: this variable type needs to be changed
-           var timeSlot: MutableList<TimeSlot>?) //Made timeSlot nullable so LandOwners can add
+           var picture: String, //Change to Url once grabbed
+           var dates: String/*, //TODO: this variable type needs to be changed?
+           var timeSlot: MutableList<TimeSlot>?*/) //Made timeSlot nullable so LandOwners can add
                                                  //Land without reserving timeSlots
 
 class TimeSlot{
