@@ -31,6 +31,7 @@ class ReservedPlacesAdapter(private val username: String,
 
         holder.textName.text = place.name
 
+        //Setup reserved date(s) to be displayed in Recycler Item.
         place.timeSlot?.forEach {
             if (it.userName == username){
                 if (it.date != null){
@@ -43,6 +44,3 @@ class ReservedPlacesAdapter(private val username: String,
         }
     }
 }
-
-//Add a username variable to timeSlot, so the specific times slot to display can be grabbed
-//Make the timeSlot variable in Land a mutableList of TimeSlot

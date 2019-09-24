@@ -17,8 +17,9 @@ class Land(var name: String,
            var ownerId: String,
            var costPerDay: String,
            var picture: Bitmap,
-           var dates: String,
-           var timeSlot: MutableList<TimeSlot>?)
+           var dates: String, //TODO: this variable type needs to be changed
+           var timeSlot: MutableList<TimeSlot>?) //Made timeSlot nullable so LandOwners can add
+                                                 //Land without reserving timeSlots
 
 class TimeSlot{
     var startDate: String? = null
