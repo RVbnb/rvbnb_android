@@ -8,6 +8,8 @@ class LandOwner(val username: String,
                 val is_land_owner: Boolean,
                 var reservedLands: MutableList<Land>?)
 
+class AcceptResponse(val token: String, val id: Int)
+
 @Entity
 class Land(@PrimaryKey
            var id: Int,

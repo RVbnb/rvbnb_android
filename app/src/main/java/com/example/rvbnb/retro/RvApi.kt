@@ -1,20 +1,26 @@
 package com.example.rvbnb.retro
 
+import com.example.rvbnb.model.AcceptResponse
 import com.example.rvbnb.model.Land
 import com.example.rvbnb.model.LandOwner
 import com.example.rvbnb.model.RvOwner
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface RvApi {
-    @POST
-    fun registerLandOwner(@Body landOwner: LandOwner): Call<LandOwner>
+    @POST("/api/auth/register")
+    fun registerUser(@Body landOwner: LandOwner)//: Call<LandOwner>
 
-    @POST
-    fun registerRvOwner(@Body rvOwner: RvOwner): Call<RvOwner>
+    @POST("/api/auth/login")
+    fun loginUser(@Body landOwner: LandOwner): Call<AcceptResponse>
 
-    @POST
-    fun registerLand(@Body land: Land): Call<Land>
+    @POST(" /api/listings")
+    fun registerLand(@Body land: Land,
+                     @Header("Authorization")token: String): Call<Land>
+
+    @GET("/api/listings")
+    fun getLands(@Header("Authorization")token: String): Call<MutableList<Land>>
+
+
 
 }
