@@ -14,15 +14,17 @@ interface RvApi {
     fun loginUser(@Body user: UserAccount): Call<AcceptResponse>
 
     @POST(" /api/listings")
-    fun registerLand(@Body land: Land,
-                     @Header("Authorization")token: String): Call<Void>
+    fun registerLand(@Header("Authorization")token: String,
+                     @Body land: Land): Call<Void>
 
     @GET("/api/listings")
     fun getLandList(@Header("Authorization")token: String): Call<MutableList<Land>>
 
     @PUT("/api/listings/{id}")
-    fun updateLand(@Body land: Land): Call<Void>
+    fun updateLand(@Header("Authorization")token: String,
+                   @Body land: Land): Call<Void>
 
     @DELETE("/api/listings/{id}")
-    fun deleteLandListingById(@Path("id")id: String): Call<Void>
+    fun deleteLandListingById(@Header("Authorization")token: String,
+                              @Path("id")id: String): Call<Void>
 }
