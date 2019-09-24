@@ -18,11 +18,11 @@ class LoginActivity : AppCompatActivity() {
 
             // If the Check Box for Landowner is checked, it will take user to the Landowner Homepage.
             if (cb_landowner.isChecked && !cb_rvowner.isChecked) {
-                var logLandownerIntent = Intent(this, LandownerActivity::class.java)
+                val logLandownerIntent = Intent(this, LandownerActivity::class.java)
                 startActivity(logLandownerIntent)
                 // If the Check Box for RV Owner is checked, it will take user to the RV Owner Homepage.
             } else if (cb_rvowner.isChecked && !cb_landowner.isChecked) {
-                var logRVOwnerIntent = Intent(this, RVOwnerActivity::class.java)
+                val logRVOwnerIntent = Intent(this, RVOwnerActivity::class.java)
                 startActivity(logRVOwnerIntent)
                 // If both Check Boxes are selected, it will make a Toast and not take the user to the Homepage.
             } else if (cb_landowner.isChecked && cb_rvowner.isChecked) {
@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
 
         // When user clicks on Register button it will take user to Registration Page.
         btn_register.setOnClickListener {
-            var registerIntent = Intent(this, RegisterActivity::class.java)
+            val registerIntent = Intent(this, RegisterActivity::class.java)
             startActivity(registerIntent)
         }
     }
