@@ -32,7 +32,7 @@ class ReservedPlacesAdapter(private val username: String,
         holder.textName.text = place.name
 
         //Setup reserved date(s) to be displayed in Recycler Item.
-        place.timeSlot?.forEach {
+        /*place.timeSlot?.forEach {
             if (it.userName == username){
                 if (it.date != null){
                     holder.textDate.text = it.date
@@ -41,6 +41,6 @@ class ReservedPlacesAdapter(private val username: String,
                     holder.textDate.text = dateRange
                 }
             }
-        }
+        }*/
     }
 }
