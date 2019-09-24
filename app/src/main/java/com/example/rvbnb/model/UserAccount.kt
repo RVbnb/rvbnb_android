@@ -3,10 +3,9 @@ package com.example.rvbnb.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-class LandOwner(val username: String,
-                val password: String,
-                val is_land_owner: Boolean,
-                var reservedLands: MutableList<Land>?)
+class UserAccount(val username: String,
+                  val password: String,
+                  val is_land_owner: Boolean)
 
 class AcceptResponse(val token: String, val id: Int)
 
