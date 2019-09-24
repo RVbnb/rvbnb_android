@@ -1,13 +1,18 @@
 package com.example.rvbnb.dao
 
-import androidx.room.Dao
-import androidx.room.Query
+import androidx.room.*
 import com.example.rvbnb.model.Land
 
 @Dao
 interface RvDao {
     @Query("SELECT * FROM Land")
     fun buildLandList(): MutableList<Land>
+
+    @Insert
+
+    @Update
+
+    @Delete
 
     fun createUsersAccounts()
     fun updateUserProfile()

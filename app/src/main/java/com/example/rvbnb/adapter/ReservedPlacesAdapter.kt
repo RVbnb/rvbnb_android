@@ -9,7 +9,9 @@ import com.example.rvbnb.R
 import com.example.rvbnb.model.Land
 import kotlinx.android.synthetic.main.reserved_places_item.view.*
 
-class ReservedPlacesAdapter(private val reservedPlaces: MutableList<Land>): RecyclerView.Adapter<ReservedPlacesAdapter.ViewHolder>() {
+class ReservedPlacesAdapter(private val username: String,
+                            private val reservedPlaces: MutableList<Land>):
+    RecyclerView.Adapter<ReservedPlacesAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val textName: TextView = view.text_name
@@ -29,11 +31,18 @@ class ReservedPlacesAdapter(private val reservedPlaces: MutableList<Land>): Recy
 
         holder.textName.text = place.name
 
-        if (place.timeSlot.date != null){
-            holder.textDate.text = place.timeSlot.date
-        }else{
-            val dateRange = place.timeSlot.startDate + " to " + place.timeSlot.endDate
-            holder.textDate.text = dateRange
+        place.timeSlot?.forEach {
+            if (it.userName == username){
+                if (it.date != null){
+                    holder.textDate.text = it.date
+                }else{
+                    val dateRange = it.startDate + " to " + it.endDate
+                    holder.textDate.text = dateRange
+                }
+            }
         }
     }
 }
+
+//Add a username variable to timeSlot, so the specific times slot to display can be grabbed
+//Make the timeSlot variable in Land a mutableList of TimeSlot
