@@ -15,7 +15,7 @@ class RVOwnerActivity : AppCompatActivity() {
 
         // When user clicks on Profile Button, it will take user to Profile Page.
         btn_user_profile_rv.setOnClickListener {
-            var profileIntent = Intent(this, ProfileActivity::class.java)
+            val profileIntent = Intent(this, ProfileActivity::class.java)
             startActivity(profileIntent)
         }
     }
