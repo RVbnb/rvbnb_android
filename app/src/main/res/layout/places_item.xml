@@ -1,18 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     android:id="@+id/llayout_places"
     android:layout_margin="4dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:background="@color/background"
+    android:padding="4dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/text_place"
-        android:layout_margin="4dp"
-        android:textSize="16sp"
-        android:text="@string/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:id="@+id/ll_listings"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</LinearLayout>
+        <!-- <TextView
+            android:id="@+id/tv_listing_name_listview"
+            android:layout_margin="4dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/listing_name"
+            android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/> -->
+
+        <ImageView
+            android:id="@+id/iv_listing_listview"
+            android:src="@drawable/image_placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"/>
+
+        <TextView
+            android:id="@+id/tv_listing_address_listview"
+            android:layout_margin="4dp"
+            android:textSize="16sp"
+            android:text="@string/listing_address"
+            android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_listing_description_listview"
+            android:layout_margin="4dp"
+            android:textSize="16sp"
+            android:text="@string/listing_description"
+            android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

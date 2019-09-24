@@ -8,6 +8,12 @@
     android:background="@color/background"
     tools:context=".ui.LandownerActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_places_item"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="top"/>
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"

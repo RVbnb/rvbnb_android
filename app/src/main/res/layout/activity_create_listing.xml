@@ -53,7 +53,6 @@
     <EditText
         android:id="@+id/et_listing_description"
         style="@style/et_box"
-        android:lines="4"
         app:layout_constraintTop_toBottomOf="@id/tv_listing_description"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
