@@ -5,16 +5,33 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.rvbnb.R
+import com.example.rvbnb.model.AcceptResponse
+import com.example.rvbnb.repo.LandRepo
+import com.example.rvbnb.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), LandRepo.ResponseCallback {
+
+    companion object{
+        lateinit var tokenAndId: AcceptResponse
+    }
+
+    override fun getAcceptResponse(acceptResponse: AcceptResponse) {
+        tokenAndId = acceptResponse
+    }
+
+    lateinit var loginViewModel : LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        loginViewModel = LoginViewModel(this)
 
         // When user clicks on Log-In button, it will take user to Homepage.
         btn_login.setOnClickListener {
+
+            loginViewModel.login("testing3", "password", this)
+//            val asdf = tokenAndId
 
             // If the Check Box for Landowner is checked, it will take user to the Landowner Homepage.
             if (cb_landowner.isChecked && !cb_rvowner.isChecked) {
