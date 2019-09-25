@@ -50,6 +50,7 @@ class LoginRepo(context: Context): DatabaseManagementInterface {
 
     interface ResponseCallback{
         fun getAcceptResponse(acceptResponse: AcceptResponse)
+        fun onFailureResponse()
     }
 
     var listener: ResponseCallback? = null
@@ -60,13 +61,15 @@ class LoginRepo(context: Context): DatabaseManagementInterface {
         val userLogin = UserAccount(username, password, false)
         rvApi.loginUser(userLogin).enqueue(object : Callback<AcceptResponse>{
             override fun onFailure(call: Call<AcceptResponse>, t: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onResponse(call: Call<AcceptResponse>, response: Response<AcceptResponse>) {
                 if (response.body() != null){
                     val acceptResponse = response.body() as AcceptResponse
                     listener?.getAcceptResponse(acceptResponse)
+                }
+                else{
+                    listener?.onFailureResponse()
                 }
             }
         })
