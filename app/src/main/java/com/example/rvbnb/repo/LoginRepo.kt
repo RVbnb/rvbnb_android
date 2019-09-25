@@ -24,7 +24,7 @@ class App: Application(){
     }
 }
 
-class LoginRepo(context: Context): DatabaseManagementInterface {
+class LoginRepo(private val context: Context): DatabaseManagementInterface {
     private val landDatabase by lazy {
         Room.databaseBuilder(context, LandDB::class.java, "land_db")
             .build() //TODO: .fallBackToDestructiveMigration()? How are we going to manage versions?
@@ -55,10 +55,10 @@ class LoginRepo(context: Context): DatabaseManagementInterface {
 
     var listener: ResponseCallback? = null
 
-    override fun loginUser(username: String, password: String, context: Context) {
+    override fun loginUser(username: String, password: String, isLandOwner: Boolean) {
         listener = context as ResponseCallback
+        val userLogin = UserAccount(username, password, isLandOwner)
         val rvApi = RvApiInstance.createRvApi()
-        val userLogin = UserAccount(username, password, false)
         rvApi.loginUser(userLogin).enqueue(object : Callback<AcceptResponse>{
             override fun onFailure(call: Call<AcceptResponse>, t: Throwable) {
             }
@@ -66,7 +66,11 @@ class LoginRepo(context: Context): DatabaseManagementInterface {
             override fun onResponse(call: Call<AcceptResponse>, response: Response<AcceptResponse>) {
                 if (response.body() != null){
                     val acceptResponse = response.body() as AcceptResponse
-                    listener?.getAcceptResponse(acceptResponse)
+                    if (acceptResponse.is_land_owner == userLogin.is_land_owner){
+                        listener?.getAcceptResponse(acceptResponse)
+                    }else{
+                        listener?.onFailureResponse()
+                    }
                 }
                 else{
                     listener?.onFailureResponse()
