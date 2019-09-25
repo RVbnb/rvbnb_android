@@ -10,6 +10,8 @@ import com.example.rvbnb.model.Land
 
 class LandRepository(context: Context): DatabaseManagementInterface {
 
+    private lateinit var rvDao: RvDao
+
     override fun buildLandList(): MutableList<Land> {
         return landDatabase.rvDao().buildLandList()
     }
@@ -18,7 +20,7 @@ class LandRepository(context: Context): DatabaseManagementInterface {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun loginUser(username: String, password: String, context: Context) {
+    override fun loginUser(username: String, password: String, isLandOwner: Boolean) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -27,15 +29,15 @@ class LandRepository(context: Context): DatabaseManagementInterface {
     }
 
     override fun addLand(land: Land) {
-        landDatabase.rvDao().addLand(land)
+        val addLandAsyncTask = AddLandAsyncTask(rvDao).execute(land)
     }
 
     override fun updateLand(land: Land) {
-        landDatabase.rvDao().updateLand(land)
+        val updateLandAsyncTask = UpdateLandAsyncTask(rvDao).execute(land)
     }
 
     override fun removeLand(land: Land) {
-        landDatabase.rvDao().removeLand(land)
+        val removeLandAsyncTask = RemoveLandAsyncTask(rvDao).execute(land)
     }
 
     override fun cancelReservation() {
@@ -52,21 +54,21 @@ class LandRepository(context: Context): DatabaseManagementInterface {
 
     // AsyncTask
     companion object {
-        private class addLandAsyncTask(rvDao: RvDao) : AsyncTask<Land, Unit, Unit>() {
+        private class AddLandAsyncTask(rvDao: RvDao) : AsyncTask<Land, Unit, Unit>() {
             override fun doInBackground(vararg p0: Land?) {
                 RvDao.addLand(p0[0]!!)
             }
             val RvDao = rvDao
         }
 
-        private class updateLandAsyncTask(rvDao: RvDao) : AsyncTask<Land, Unit, Unit>() {
+        private class UpdateLandAsyncTask(rvDao: RvDao) : AsyncTask<Land, Unit, Unit>() {
             override fun doInBackground(vararg p0: Land?) {
                 RvDao.updateLand(p0[0]!!)
             }
             val RvDao = rvDao
         }
 
-        private class deleteLandAsyncTask(rvDao: RvDao) : AsyncTask<Land, Unit, Unit>() {
+        private class RemoveLandAsyncTask(rvDao: RvDao) : AsyncTask<Land, Unit, Unit>() {
             override fun doInBackground(vararg p0: Land?) {
                 RvDao.removeLand(p0[0]!!)
             }
