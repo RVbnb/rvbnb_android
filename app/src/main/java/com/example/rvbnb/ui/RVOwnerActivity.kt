@@ -18,5 +18,11 @@ class RVOwnerActivity : AppCompatActivity() {
             val profileIntent = Intent(this, ProfileActivity::class.java)
             startActivity(profileIntent)
         }
+
+        // When user clicks on Logout Button, it will take user back to the Login Page.
+        iv_logout_rv.setOnClickListener {
+            val logoutIntent = Intent(this, LoginActivity::class.java)
+            startActivity(logoutIntent)
+        }
     }
 }
