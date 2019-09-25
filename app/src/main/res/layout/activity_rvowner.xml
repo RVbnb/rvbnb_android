@@ -16,6 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/places_item"
+        />
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout_rv"
         android:layout_width="match_parent"

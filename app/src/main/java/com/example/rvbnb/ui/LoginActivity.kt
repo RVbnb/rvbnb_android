@@ -10,7 +10,7 @@ import com.example.rvbnb.repo.LoginRepo
 import com.example.rvbnb.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity(), LoginRepo.ResponseCallback {
+class LoginActivity : AppCompatActivity(), LoginRepo.LoginResponseCallback {
 
     companion object{
         lateinit var tokenAndId: AcceptResponse

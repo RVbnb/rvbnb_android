@@ -4,17 +4,32 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.rvbnb.R
+import com.example.rvbnb.adapter.PlacesAdapter
 import com.example.rvbnb.model.Land
+import com.example.rvbnb.repo.LoginRepo
 import com.example.rvbnb.retro.RvApi
 import kotlinx.android.synthetic.main.activity_rvowner.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RVOwnerActivity : AppCompatActivity(), Callback<Land> {
+class RVOwnerActivity : AppCompatActivity(), Callback<Land>, LoginRepo.GetLandListCallback {
 
     lateinit var rvApi: RvApi
+
+    override fun getList(mutableList: MutableList<Land>) {
+        recyclerSetup(mutableList)
+    }
+
+    private fun recyclerSetup(list: MutableList<Land>){
+        recycler_rv.setHasFixedSize(true)
+        val manager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        recycler_rv.layoutManager = manager
+        recycler_rv.adapter = PlacesAdapter(list)
+    }
 
     override fun onFailure(call: Call<Land>, t: Throwable) {
         t.printStackTrace()
@@ -40,6 +55,9 @@ class RVOwnerActivity : AppCompatActivity(), Callback<Land> {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rvowner)
         title = "RV Owner"
+
+        val loginRepo = LoginRepo(this)
+        loginRepo.retrieveLandList()
 
         // When user clicks on Profile Button, it will take user to Profile Page.
         btn_user_profile_rv.setOnClickListener {
