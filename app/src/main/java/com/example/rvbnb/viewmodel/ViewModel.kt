@@ -41,32 +41,3 @@ class ViewModel (application: Application): AndroidViewModel(application) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
-
-//class ViewModel (application: Application): AndroidViewModel(application) {
-//
-//    private var repository: LandRepository = LandRepository(application)
-//
-//    // TODO add LiveData
-//    private var landList: MutableList<Land> = repository.buildLandList()
-//
-//    // TODO add LiveData
-//    fun buildLandList(): MutableList<Land> {
-//        return landList
-//    }
-//
-//    fun addLand(land: Land) {
-//        repository.addLand(land)
-//    }
-//
-//    fun updateLand(land: Land) {
-//        repository.updateLand(land)
-//    }
-//
-//    fun removeLand(land: Land) {
-//        repository.removeLand(land)
-//    }
-//
-//    fun cancelReservation() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//    }
-//}
