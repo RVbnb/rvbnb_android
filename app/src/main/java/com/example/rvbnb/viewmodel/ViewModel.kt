@@ -17,14 +17,6 @@ class ViewModel (application: Application): AndroidViewModel(application) {
         return landList
     }
 
-    fun createUsersAccounts() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    fun updateUserProfile() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     fun addLand(land: Land) {
         repository.addLand(land)
     }
@@ -37,7 +29,7 @@ class ViewModel (application: Application): AndroidViewModel(application) {
         repository.removeLand(land)
     }
 
-    fun cancelReserve() {
+    fun cancelReservation() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
