@@ -20,11 +20,11 @@ class App: Application(){
 
     override fun onCreate() {
         super.onCreate()
-        repository = LandRepo(applicationContext)
+        repository = LoginRepo(applicationContext)
     }
 }
 
-class LandRepo(context: Context): DatabaseManagementInterface {
+class LoginRepo(context: Context): DatabaseManagementInterface {
     private val landDatabase by lazy {
         Room.databaseBuilder(context, LandDB::class.java, "land_db")
             .build() //TODO: .fallBackToDestructiveMigration()? How are we going to manage versions?
@@ -57,7 +57,8 @@ class LandRepo(context: Context): DatabaseManagementInterface {
     override fun loginUser(username: String, password: String, context: Context) {
         listener = context as ResponseCallback
         val rvApi = RvApiInstance.createRvApi()
-        rvApi.loginUser("{\"username\": \"$username\", \"password\": \"$password\"}").enqueue(object : Callback<AcceptResponse>{
+        val userLogin = UserAccount(username, password, false)
+        rvApi.loginUser(userLogin).enqueue(object : Callback<AcceptResponse>{
             override fun onFailure(call: Call<AcceptResponse>, t: Throwable) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }

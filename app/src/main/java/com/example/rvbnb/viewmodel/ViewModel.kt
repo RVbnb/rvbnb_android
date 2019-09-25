@@ -3,11 +3,11 @@ package com.example.rvbnb.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.example.rvbnb.model.Land
-import com.example.rvbnb.repo.LandRepo
+import com.example.rvbnb.repo.LoginRepo
 
 class ViewModel (application: Application): AndroidViewModel(application) {
 
-    private var repository: LandRepo = LandRepo(application)
+    private var repository: LoginRepo = LoginRepo(application)
 
     // TODO add LiveData
     private var landList: MutableList<Land> = repository.buildLandList()

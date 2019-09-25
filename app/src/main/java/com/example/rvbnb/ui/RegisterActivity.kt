@@ -16,6 +16,8 @@ class RegisterActivity : AppCompatActivity() {
         // When user clicks on Submit button it will take user back to Login Page to login.
         btn_submit.setOnClickListener {
 
+
+
             // If the Check Box for Landowner is checked, it will take user to the Login Page.
             if (cb_register_landowner.isChecked && !cb_register_rvowner.isChecked) {
                 val registrationIntent = Intent(this, LoginActivity::class.java)
