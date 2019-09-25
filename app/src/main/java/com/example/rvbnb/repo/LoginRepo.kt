@@ -48,21 +48,27 @@ class LandRepo(context: Context): DatabaseManagementInterface {
         })
     }
 
-    override fun loginUser(username: String, password: String): AcceptResponse {
+    interface ResponseCallback{
+        fun getAcceptResponse(acceptResponse: AcceptResponse)
+    }
+
+    var listener: ResponseCallback? = null
+
+    override fun loginUser(username: String, password: String, context: Context) {
+        listener = context as ResponseCallback
         val rvApi = RvApiInstance.createRvApi()
-        lateinit var acceptResponse: AcceptResponse
-        rvApi.loginUser(username, password).enqueue(object : Callback<AcceptResponse>{
+        rvApi.loginUser("{\"username\": \"$username\", \"password\": \"$password\"}").enqueue(object : Callback<AcceptResponse>{
             override fun onFailure(call: Call<AcceptResponse>, t: Throwable) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onResponse(call: Call<AcceptResponse>, response: Response<AcceptResponse>) {
                 if (response.body() != null){
-                    acceptResponse = response.body() as AcceptResponse
+                    val acceptResponse = response.body() as AcceptResponse
+                    listener?.getAcceptResponse(acceptResponse)
                 }
             }
         })
-        return acceptResponse
     }
 
     override fun updateUserProfile() {
