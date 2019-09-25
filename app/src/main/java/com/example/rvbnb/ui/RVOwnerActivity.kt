@@ -13,6 +13,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RVOwnerActivity : AppCompatActivity(), Callback<Land> {
+
+    lateinit var rvApi: RvApi
+
     override fun onFailure(call: Call<Land>, t: Throwable) {
         t.printStackTrace()
         val response = "Failure; ${t.printStackTrace()}"
@@ -27,8 +30,6 @@ class RVOwnerActivity : AppCompatActivity(), Callback<Land> {
             Toast.makeText(this@RVOwnerActivity, response, Toast.LENGTH_SHORT).show()
         }
     }
-
-    lateinit var rvApi: RvApi
 
     // TODO: Need to figure out how to incorporate the token here? Do you need the token to do a search?
 //    private fun searchLand(token: String) {
