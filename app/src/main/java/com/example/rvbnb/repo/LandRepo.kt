@@ -5,7 +5,13 @@ import android.content.Context
 import androidx.room.Room
 import com.example.rvbnb.db.DatabaseManagementInterface
 import com.example.rvbnb.db.LandDB
+import com.example.rvbnb.model.AcceptResponse
 import com.example.rvbnb.model.Land
+import com.example.rvbnb.model.UserAccount
+import com.example.rvbnb.retro.RvApiInstance
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class App: Application(){
     companion object{
@@ -28,8 +34,35 @@ class LandRepo(context: Context): DatabaseManagementInterface {
         return landDatabase.rvDao().buildLandList()
     }
 
-    override fun createUserAccount() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun createUserAccount(username: String, password: String, isLandOwner: Boolean) {
+        val rvApi = RvApiInstance.createRvApi()
+        val user = UserAccount(username, password, isLandOwner)
+        rvApi.registerUser(user).enqueue(object : Callback<Void> {
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        })
+    }
+
+    override fun loginUser(username: String, password: String): AcceptResponse {
+        val rvApi = RvApiInstance.createRvApi()
+        lateinit var acceptResponse: AcceptResponse
+        rvApi.loginUser(username, password).enqueue(object : Callback<AcceptResponse>{
+            override fun onFailure(call: Call<AcceptResponse>, t: Throwable) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onResponse(call: Call<AcceptResponse>, response: Response<AcceptResponse>) {
+                if (response.body() != null){
+                    acceptResponse = response.body() as AcceptResponse
+                }
+            }
+        })
+        return acceptResponse
     }
 
     override fun updateUserProfile() {
@@ -48,7 +81,7 @@ class LandRepo(context: Context): DatabaseManagementInterface {
         landDatabase.rvDao().removeLand(land)
     }
 
-    override fun cancelReserve() {
+    override fun cancelReservation() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

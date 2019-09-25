@@ -11,7 +11,7 @@ interface RvApi {
     fun registerUser(@Body user: UserAccount): Call<Void>
 
     @POST("/api/auth/login")
-    fun loginUser(@Body user: UserAccount): Call<AcceptResponse>
+    fun loginUser(username: String, password: String): Call<AcceptResponse>
 
     @POST(" /api/listings")
     fun registerLand(@Header("Authorization")token: String,
