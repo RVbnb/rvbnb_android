@@ -10,13 +10,13 @@ class UserAccount(val username: String,
 class AcceptResponse(val token: String, val id: Int)
 
 @Entity
-class Land(@PrimaryKey
-           var id: Int,
-           var owner_id: Int,
+class Land(var owner_id: Int,
            var location: String,
            var description: String,
            var price_per_day: Double,
-           var photo: String/*, //Change to Url once grabbed
+           var photo: String,
+           @PrimaryKey(autoGenerate = true)
+           var id: Int/*, //Change to Url once grabbed
            var dates: String, //TODO: this variable type needs to be changed?
            var timeSlot: MutableList<TimeSlot>?*/) //Made timeSlot nullable so LandOwners can add
                                                  //Land without reserving timeSlots
