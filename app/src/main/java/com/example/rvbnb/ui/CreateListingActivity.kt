@@ -19,6 +19,7 @@ class CreateListingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_listing)
+        title = "Add New Listing"
 
         // When user clicks on Image Placeholder, user can select a photo.
         iv_listing.setOnClickListener {
