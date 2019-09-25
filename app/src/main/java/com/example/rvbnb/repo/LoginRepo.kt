@@ -10,6 +10,7 @@ import com.example.rvbnb.model.AcceptResponse
 import com.example.rvbnb.model.Land
 import com.example.rvbnb.model.UserAccount
 import com.example.rvbnb.retro.RvApiInstance
+import com.example.rvbnb.ui.LoginActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,6 +36,29 @@ class LoginRepo(private val context: Context): DatabaseManagementInterface {
         return landDatabase.rvDao().buildLandList()
     }
 
+    interface GetLandListCallback{
+        fun getList(mutableList: MutableList<Land>)
+    }
+
+    private var listListener: GetLandListCallback? = null
+
+    fun retrieveLandList(){
+        listListener = context as GetLandListCallback
+        val rvApi = RvApiInstance.createRvApi()
+        rvApi.getLandList(LoginActivity.tokenAndId.token).enqueue(object : Callback<MutableList<Land>>{
+            override fun onFailure(call: Call<MutableList<Land>>, t: Throwable) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onResponse(call: Call<MutableList<Land>>, response: Response<MutableList<Land>>) {
+                val landList = response.body()
+                if(landList != null){
+                    listListener?.getList(landList)
+                }
+            }
+        })
+    }
+
     override fun createUserAccount(username: String, password: String, isLandOwner: Boolean) {
         val rvApi = RvApiInstance.createRvApi()
         val user = UserAccount(username, password, isLandOwner)
@@ -49,15 +73,15 @@ class LoginRepo(private val context: Context): DatabaseManagementInterface {
         })
     }
 
-    interface ResponseCallback{
+    interface LoginResponseCallback{
         fun getAcceptResponse(acceptResponse: AcceptResponse)
         fun onFailureResponse()
     }
 
-    var listener: ResponseCallback? = null
+    var listener: LoginResponseCallback? = null
 
     override fun loginUser(username: String, password: String, isLandOwner: Boolean) {
-        listener = context as ResponseCallback
+        listener = context as LoginResponseCallback
         val userLogin = UserAccount(username, password, isLandOwner)
         val rvApi = RvApiInstance.createRvApi()
         rvApi.loginUser(userLogin).enqueue(object : Callback<AcceptResponse>{
