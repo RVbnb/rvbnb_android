@@ -1,6 +1,5 @@
 package com.example.rvbnb.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -21,12 +20,21 @@ class RegisterActivity : AppCompatActivity() {
         // When user clicks on Submit button it will take user back to Login Page to login.
         btn_submit.setOnClickListener {
 
-            registerViewModel.register(et_email.text.toString(), et_register_password.text.toString(), cb_register_landowner.isChecked)
-
             registerViewModel.checkCheckboxes(cb_register_landowner, cb_register_rvowner)
 
+            if (cb_register_landowner != cb_register_rvowner){
+                if (et_register_password.text.toString() == et_register_confirm_password.text.toString()){
+                    registerViewModel
+                        .register(et_email.text.toString(),
+                                  et_register_password.text.toString(),
+                                  cb_register_landowner.isChecked)
+                }else{
+                    Toast.makeText(this, "Password fields must match.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
             // TODO: Need to pass registration information to Profile Page.
-            // TODO: Check to make sure passwords match.
+            // TODO: Make blank user invalid option.
         }
     }
 }

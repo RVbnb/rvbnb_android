@@ -2,6 +2,7 @@ package com.example.rvbnb.repo
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import androidx.room.Room
 import com.example.rvbnb.db.DatabaseManagementInterface
 import com.example.rvbnb.db.LandDB
@@ -43,7 +44,7 @@ class LoginRepo(private val context: Context): DatabaseManagementInterface {
             }
 
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.i("IsSuccessful?", "Yes!")
             }
         })
     }
