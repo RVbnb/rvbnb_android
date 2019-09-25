@@ -18,7 +18,7 @@ class LandRepository(context: Context): DatabaseManagementInterface {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun loginUser(username: String, password: String, context: Context) {
+    override fun loginUser(username: String, password: String, isLandOwner: Boolean) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
