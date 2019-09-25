@@ -1,17 +1,14 @@
 package com.example.rvbnb.viewmodel
 
 import android.content.Context
-import android.view.View
 import androidx.lifecycle.ViewModel
-import com.example.rvbnb.repo.LandRepo
+import com.example.rvbnb.repo.LoginRepo
 
 class LoginViewModel(context: Context): ViewModel() {
 
-    val landRepo = LandRepo(context)
-
-
+    private val loginRepo = LoginRepo(context)
 
     fun login(username: String, password: String, context: Context){
-        landRepo.loginUser(username, password, context)
+        loginRepo.loginUser(username, password, context)
     }
 }
