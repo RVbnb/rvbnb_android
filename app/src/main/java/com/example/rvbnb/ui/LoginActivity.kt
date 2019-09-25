@@ -18,6 +18,11 @@ class LoginActivity : AppCompatActivity(), LoginRepo.ResponseCallback {
 
     override fun getAcceptResponse(acceptResponse: AcceptResponse) {
         tokenAndId = acceptResponse
+        loginViewModel.checkCheckboxes(cb_landowner, cb_rvowner)
+    }
+
+    override fun onFailureResponse() {
+        Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
     }
 
     lateinit var loginViewModel : LoginViewModel
@@ -27,26 +32,9 @@ class LoginActivity : AppCompatActivity(), LoginRepo.ResponseCallback {
         setContentView(R.layout.activity_login)
         loginViewModel = LoginViewModel(this)
 
-        // When user clicks on Log-In button, it will take user to Homepage.
+        // When user clicks on Log-In button with valid credentials, it will take user to Homepage.
         btn_login.setOnClickListener {
-
-            loginViewModel.login(et_username.text.toString(), et_password.text.toString(), this)
-
-            // If the Check Box for Landowner is checked, it will take user to the Landowner Homepage.
-            if (cb_landowner.isChecked && !cb_rvowner.isChecked) {
-                val logLandownerIntent = Intent(this, LandownerActivity::class.java)
-                startActivity(logLandownerIntent)
-                // If the Check Box for RV Owner is checked, it will take user to the RV Owner Homepage.
-            } else if (cb_rvowner.isChecked && !cb_landowner.isChecked) {
-                val logRVOwnerIntent = Intent(this, RVOwnerActivity::class.java)
-                startActivity(logRVOwnerIntent)
-                // If both Check Boxes are selected, it will make a Toast and not take the user to the Homepage.
-            } else if (cb_landowner.isChecked && cb_rvowner.isChecked) {
-                Toast.makeText(this, "Please only select one", Toast.LENGTH_LONG).show()
-                // If neither Check Boxes are selected, it will make a Toast and not take the user to the Homepage.
-            } else {
-                Toast.makeText(this, "Please select Landowner or RV Owner", Toast.LENGTH_LONG).show()
-            }
+            loginViewModel.login(et_username.text.toString(), et_password.text.toString(), cb_landowner.isChecked)
         }
 
         // When user clicks on Register button it will take user to Registration Page.

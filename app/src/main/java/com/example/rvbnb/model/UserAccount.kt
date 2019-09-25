@@ -7,7 +7,7 @@ class UserAccount(val username: String,
                   val password: String,
                   val is_land_owner: Boolean)
 
-class AcceptResponse(val token: String, val id: Int)
+class AcceptResponse(val token: String, val id: Int, username: String, val is_land_owner: Boolean)
 
 @Entity
 class Land(var owner_id: Int,
