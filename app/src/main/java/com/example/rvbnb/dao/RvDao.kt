@@ -8,10 +8,10 @@ interface RvDao {
     @Query("SELECT * FROM Land")
     fun buildLandList(): MutableList<Land>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addLand(land: Land)
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateLand(land: Land)
 
     @Delete
