@@ -28,5 +28,11 @@ class LandownerActivity : AppCompatActivity() {
             val addIntent = Intent(this, CreateListingActivity::class.java)
             startActivity(addIntent)
         }
+
+        // When user clicks on Logout Button, it will take user back to the Login Page.
+        iv_logout.setOnClickListener {
+            val logoutIntent = Intent(this, LoginActivity::class.java)
+            startActivity(logoutIntent)
+        }
     }
 }
