@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity(), LoginRepo.ResponseCallback {
         // When user clicks on Log-In button, it will take user to Homepage.
         btn_login.setOnClickListener {
 
-            loginViewModel.login("testing3", "password", this)
+            loginViewModel.login(et_username.text.toString(), et_password.text.toString(), this)
 
             // If the Check Box for Landowner is checked, it will take user to the Landowner Homepage.
             if (cb_landowner.isChecked && !cb_rvowner.isChecked) {

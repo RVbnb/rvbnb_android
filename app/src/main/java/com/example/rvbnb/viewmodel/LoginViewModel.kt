@@ -6,11 +6,7 @@ import com.example.rvbnb.repo.LoginRepo
 
 class LoginViewModel(context: Context): ViewModel() {
 
-    val loginRepo = LoginRepo(context)
-
-    fun register(username: String, password: String, isLandOwner: Boolean){
-        loginRepo.createUserAccount(username, password, isLandOwner)
-    }
+    private val loginRepo = LoginRepo(context)
 
     fun login(username: String, password: String, context: Context){
         loginRepo.loginUser(username, password, context)
