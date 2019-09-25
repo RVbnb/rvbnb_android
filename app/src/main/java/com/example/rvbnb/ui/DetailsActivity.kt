@@ -38,6 +38,12 @@ class DetailsActivity : AppCompatActivity() {
             startActivity(cancelIntent)
         }
 
+        btn_listing_update_details.setOnClickListener {
+            // TODO: add code for all of the parts that could be updated
+            val updateIntent = Intent(this, LandownerActivity::class.java)
+            startActivity(updateIntent)
+        }
+
         btn_listing_delete_details.setOnClickListener {
             // TODO: .removeAt(id)
             val deleteIntent = Intent(this, LandownerActivity::class.java)
