@@ -30,7 +30,7 @@ interface RvApi {
 
     @DELETE("/api/listings/{id}")
     fun deleteLandListingById(@Header("Authorization")token: String,
-                              @Path("id")id: String): Call<Void>
+                              @Path("id")id: Int): Call<Void>
 
     @GET("/api/listings/all/reservations")
     fun getAllReservations(@Header("Authorization")token: String): Call<Reservation>
