@@ -25,12 +25,6 @@ import java.io.InputStream
 
 class DetailsActivity : AppCompatActivity() {
 
-    var photoUri: Uri? = null
-
-    companion object {
-        internal const val REQUEST_IMAGE_GET = 1
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
@@ -94,18 +88,6 @@ class DetailsActivity : AppCompatActivity() {
             Log.i("ImageLinkBad", "True", e)
         }
 
-
-        // When user clicks on photo, user can select another photo to update with.
-        iv_listing_details.setOnClickListener {
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.type = "image/*"
-            if (intent.resolveActivity(packageManager) != null) {
-                startActivityForResult(intent,
-                    REQUEST_IMAGE_GET
-                )
-            }
-        }
-
         // When users clicks on Cancel, user will be brought back to the Homepage.
         btn_listing_cancel_details.setOnClickListener {
             val cancelIntent = Intent(this, LandownerActivity::class.java)
@@ -113,19 +95,19 @@ class DetailsActivity : AppCompatActivity() {
         }
 
         btn_listing_delete_details.setOnClickListener {
-            // TODO: .removeAt(id)
+            rvApi.deleteLandListingById(LoginActivity.tokenAndId.token, displayLand.id).enqueue(object: Callback<Void>{
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    Log.i("onResponse", "Successful")
+                }
+
+            })
+
             val deleteIntent = Intent(this, LandownerActivity::class.java)
             startActivity(deleteIntent)
-        }
-    }
-
-    // The photo that was selected by the user will be set.
-    @SuppressLint("MissingSuperCall")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK) {
-            val uri = data!!.data
-            photoUri = uri
-            iv_listing_details.setImageURI(uri)
         }
     }
 }
