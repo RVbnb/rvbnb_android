@@ -3,6 +3,7 @@ package com.example.rvbnb.adapter
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.example.rvbnb.model.Land
 import com.example.rvbnb.ui.DetailsActivity
 import com.example.rvbnb.ui.DetailsRVOwnerActivity
 import com.example.rvbnb.ui.RVOwnerActivity
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.places_item.view.*
 
 class PlacesAdapter(private val listPlaces: MutableList<Land>): RecyclerView.Adapter<PlacesAdapter.ViewHolder>() {
@@ -42,9 +44,16 @@ class PlacesAdapter(private val listPlaces: MutableList<Land>): RecyclerView.Ada
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val place = listPlaces[position]
-        holder.landPicture.setImageURI(Uri.parse(place.photo))
+//        holder.landPicture.setImageURI(Uri.parse(place.photo))
+
         holder.landLocation.text = place.location
         holder.landDescription.text = place.description
+
+        try {
+            Picasso.get().load(place.photo).into(holder.landPicture)
+        }catch (e: Exception){
+            Log.i("BadStuff", "Yep")
+        }
 
         holder.card.setOnClickListener {
             lateinit var intent: Intent
