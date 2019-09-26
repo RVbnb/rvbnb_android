@@ -36,6 +36,7 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_details)
         title = "Land Details"
 
+        val rvApi = RvApiInstance.createRvApi()
         val displayLand: Land = intent.getSerializableExtra(PlacesAdapter.LAND_KEY) as Land
 
         et_listing_address_details.setText(displayLand.location)
@@ -45,7 +46,26 @@ class DetailsActivity : AppCompatActivity() {
 
 //        var urlString = "https://scx1.b-cdn.net/csz/news/800/2018/3-ocean.jpg"
 
-        val rvApi = RvApiInstance.createRvApi()
+
+        btn_listing_update_details.setOnClickListener {
+            val landUpdate = Land(LoginActivity.tokenAndId.id, 
+                et_listing_address_details.text.toString(),
+                et_listing_description_details.text.toString(),
+                et_listing_price_details.text.toString().toDouble(),
+                et_listing_url_details.text.toString())
+            rvApi.updateLand(LoginActivity.tokenAndId.token, displayLand.id, landUpdate).enqueue(object: Callback<Void>{
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    Log.i("We had a success!", "Nope")
+                    //https://img-aws.ehowcdn.com/700x/cdn.onlyinyourstate.com/wp-content/uploads/2015/06/a63-700x467.jpg
+                }
+
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    Log.i("We had a success!", "Yup")
+                }
+            })
+        }
+
+
         rvApi.getReservationsByLandId(LoginActivity.tokenAndId.token, displayLand.id)
             .enqueue(object : Callback<MutableList<Reservation>> {
                 override fun onFailure(call: Call<MutableList<Reservation>>, t: Throwable) {
