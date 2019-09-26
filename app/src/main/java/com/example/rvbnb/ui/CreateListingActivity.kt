@@ -18,8 +18,6 @@ import retrofit2.Response
 
 class CreateListingActivity : AppCompatActivity() {
 
-    lateinit var listing: Land
-
     var photoUri: Uri? = null
 
     companion object {
@@ -32,15 +30,15 @@ class CreateListingActivity : AppCompatActivity() {
         title = "Add New Listing"
 
         // When user clicks on Image Placeholder, user can select a photo.
-        iv_listing.setOnClickListener {
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.type = "image/*"
-            if (intent.resolveActivity(packageManager) != null) {
-                startActivityForResult(intent,
-                    REQUEST_IMAGE_GET
-                )
-            }
-        }
+//        iv_listing.setOnClickListener {
+//            val intent = Intent(Intent.ACTION_GET_CONTENT)
+//            intent.type = "image/*"
+//            if (intent.resolveActivity(packageManager) != null) {
+//                startActivityForResult(intent,
+//                    REQUEST_IMAGE_GET
+//                )
+//            }
+//        }
 
         // Calendar Picker
         val c = Calendar.getInstance()
@@ -66,6 +64,11 @@ class CreateListingActivity : AppCompatActivity() {
 
         // When users clicks on Add Listing, user will be brought back to the Homepage.
         btn_listing_add.setOnClickListener {
+            addListing(Land(LoginActivity.tokenAndId.id,
+                et_listing_address.text.toString(),
+                et_listing_description.text.toString(),
+                et_listing_price.text.toString().toDouble(),
+                et_listing_url.text.toString()))
 
             // TODO: Need to have data that was entered to be saved and populated on the Homepage.
             val addListingIntent = Intent(this, LandownerActivity::class.java)
@@ -74,18 +77,18 @@ class CreateListingActivity : AppCompatActivity() {
     }
 
     // The photo that was selected by the user will be set.
-    @SuppressLint("MissingSuperCall")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK) {
-            val uri = data!!.data
-            photoUri = uri
-            iv_listing.setImageURI(uri)
-        }
-    }
+//    @SuppressLint("MissingSuperCall")
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK) {
+//            val uri = data!!.data
+//            photoUri = uri
+//            iv_listing.setImageURI(uri)
+//        }
+//    }
 
-    private fun addListing() {
+    private fun addListing(land: Land) {
         val rvApi = RvApiInstance.createRvApi()
-        rvApi.addLand(LoginActivity.tokenAndId.token, listing).enqueue(object: Callback<Void>{
+        rvApi.addLand(LoginActivity.tokenAndId.token, land).enqueue(object: Callback<Void>{
             override fun onFailure(call: Call<Void>, t: Throwable) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }

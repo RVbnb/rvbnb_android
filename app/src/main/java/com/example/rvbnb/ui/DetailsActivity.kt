@@ -58,10 +58,10 @@ class DetailsActivity : AppCompatActivity() {
                 ) {
                     if(response.body() != null){
                         val reservations = response.body()
-                        recycler_reservations.setHasFixedSize(true)
+                        recycler_reservations_landowner.setHasFixedSize(true)
                         val manager = LinearLayoutManager(this@DetailsActivity, RecyclerView.VERTICAL, false)
-                        recycler_reservations.layoutManager = manager
-                        recycler_reservations.adapter = ReservationsAdapter(reservations!!)
+                        recycler_reservations_landowner.layoutManager = manager
+                        recycler_reservations_landowner.adapter = ReservationsAdapter(reservations!!)
                     }
                 }
             })
