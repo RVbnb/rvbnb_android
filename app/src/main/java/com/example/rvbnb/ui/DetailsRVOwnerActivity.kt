@@ -3,8 +3,11 @@ package com.example.rvbnb.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.rvbnb.R
 import com.example.rvbnb.adapter.PlacesAdapter
+import com.example.rvbnb.adapter.ReservationsAdapter
 import com.example.rvbnb.model.Land
 import com.example.rvbnb.model.Reservation
 import com.example.rvbnb.model.Reservations
@@ -40,7 +43,10 @@ class DetailsRVOwnerActivity : AppCompatActivity() {
                 ) {
                     if(response.body() != null){
                         val reservations = response.body()
-                        reservations
+                        recycler_reservations.setHasFixedSize(true)
+                        val manager = LinearLayoutManager(this@DetailsRVOwnerActivity, RecyclerView.VERTICAL, false)
+                        recycler_reservations.layoutManager = manager
+                        recycler_reservations.adapter = ReservationsAdapter(reservations!!)
                     }
                 }
             })

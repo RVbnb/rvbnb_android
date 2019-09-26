@@ -7,12 +7,20 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.rvbnb.R
 import com.example.rvbnb.adapter.PlacesAdapter
+import com.example.rvbnb.adapter.ReservationsAdapter
 import com.example.rvbnb.model.Land
+import com.example.rvbnb.model.Reservation
+import com.example.rvbnb.retro.RvApiInstance
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.activity_details_rvowner.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.InputStream
 
 class DetailsActivity : AppCompatActivity() {
@@ -36,6 +44,27 @@ class DetailsActivity : AppCompatActivity() {
         et_listing_price_details.setText(displayLand.price_per_day.toString())
 
 //        var urlString = "https://scx1.b-cdn.net/csz/news/800/2018/3-ocean.jpg"
+
+        val rvApi = RvApiInstance.createRvApi()
+        rvApi.getReservationsByLandId(LoginActivity.tokenAndId.token, displayLand.id)
+            .enqueue(object : Callback<MutableList<Reservation>> {
+                override fun onFailure(call: Call<MutableList<Reservation>>, t: Throwable) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+                override fun onResponse(
+                    call: Call<MutableList<Reservation>>,
+                    response: Response<MutableList<Reservation>>
+                ) {
+                    if(response.body() != null){
+                        val reservations = response.body()
+                        recycler_reservations.setHasFixedSize(true)
+                        val manager = LinearLayoutManager(this@DetailsActivity, RecyclerView.VERTICAL, false)
+                        recycler_reservations.layoutManager = manager
+                        recycler_reservations.adapter = ReservationsAdapter(reservations!!)
+                    }
+                }
+            })
 
         try {
             Picasso.get().load(displayLand.photo).into(iv_listing_details)
