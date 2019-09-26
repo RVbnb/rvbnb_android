@@ -12,6 +12,7 @@ import com.example.rvbnb.model.Land
 import com.example.rvbnb.repo.LoginRepo
 import com.example.rvbnb.retro.RvApi
 import kotlinx.android.synthetic.main.activity_rvowner.*
+import kotlinx.android.synthetic.main.places_item.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -77,5 +78,14 @@ class RVOwnerActivity : AppCompatActivity(), Callback<Land>, LoginRepo.GetLandLi
 //            val searchText = et_search.text.toString()
 //            searchLand(searchText)
 //        }
+    }
+
+    // TODO: Need to add function to click on cardview to see details of the land.
+    fun onDetailsRVOwner (land: Land) {
+        llayout_places.setOnClickListener {
+            val viewListingIntent = Intent(this, DetailsRVOwnerActivity::class.java)
+            intent.putExtra("LAND_ENTRY_ID", land?.id)
+            startActivity(viewListingIntent)
+        }
     }
 }
