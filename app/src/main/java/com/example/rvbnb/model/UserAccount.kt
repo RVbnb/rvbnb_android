@@ -21,24 +21,28 @@ class Land(var owner_id: Int,
            var timeSlot: MutableList<TimeSlot>?*/) //Made timeSlot nullable so LandOwners can add
                                                  //Land without reserving timeSlots
 
-class TimeSlot{
-    var startDate: String? = null
-    var endDate: String? = null
-    var date: String? = null
-    var userName: String? = null
+class Reservations(listing: Land, reservations: MutableList<TimeSlot>)
 
-    constructor(username: String,
-                startDate: String,
-                endDate: String){
-        this.userName = username
-        this.startDate = startDate
-        this.endDate = endDate
-    }
+class TimeSlot(id: Int, listing_id: Int, user_id: Int, reserve_date_start: String, reserve_date_end: String)
 
-
-    constructor(userName: String,
-                date: String){
-        this.userName = userName
-        this.date = date
-    }
-}
+//class TimeSlot{
+//    var startDate: String? = null
+//    var endDate: String? = null
+//    var date: String? = null
+//    var userName: String? = null
+//
+//    constructor(username: String,
+//                startDate: String,
+//                endDate: String){
+//        this.userName = username
+//        this.startDate = startDate
+//        this.endDate = endDate
+//    }
+//
+//
+//    constructor(userName: String,
+//                date: String){
+//        this.userName = userName
+//        this.date = date
+//    }
+//}
