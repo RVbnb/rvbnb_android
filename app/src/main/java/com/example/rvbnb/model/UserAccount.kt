@@ -24,7 +24,7 @@ class Land(var owner_id: Int,
 
 class Reservations(listing: Land, reservations: MutableList<Reservation>)
 
-class Reservation(id: Int, listing_id: Int, user_id: Int, reserve_date_start: String, reserve_date_end: String)
+class Reservation(var id: Int, var listing_id: Int, var user_id: Int, var reserve_date_start: String, var reserve_date_end: String)
 
 //class Reservation{
 //    var startDate: String? = null
