@@ -38,7 +38,10 @@ class DetailsRVOwnerActivity : AppCompatActivity() {
                     call: Call<MutableList<Reservation>>,
                     response: Response<MutableList<Reservation>>
                 ) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    if(response.body() != null){
+                        val reservations = response.body()
+                        reservations
+                    }
                 }
             })
 
