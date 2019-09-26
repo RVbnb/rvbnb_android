@@ -56,12 +56,26 @@
     <EditText
         android:id="@+id/et_password"
         style="@style/et_box"
+        android:inputType="textPassword"
         android:lines="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_password"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_show_hide"
+        android:text="Show"
+        android:background="@android:color/transparent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="48dp"
+        android:paddingLeft="20dp"
+        android:paddingBottom="12dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_password"/>
 
     <TextView
         android:id="@+id/tv_login_as"

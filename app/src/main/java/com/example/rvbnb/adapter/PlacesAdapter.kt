@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.places_item.view.*
 class PlacesAdapter(private val listPlaces: MutableList<Land>): RecyclerView.Adapter<PlacesAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        //val landName: TextView = view.tv_listing_name_listview
         val landPicture = view.iv_listing_listview
         var landLocation = view.tv_listing_address_listview
         var landDescription = view.tv_listing_description_listview
