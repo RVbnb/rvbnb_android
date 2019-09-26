@@ -8,4 +8,5 @@
     <string name="listing_availability">Availability:</string>
     <string name="listing_price">Cost Per Day:</string>
     <string name="search">Search</string>
+    <string name="image_url">Image Url:</string>
 </resources>

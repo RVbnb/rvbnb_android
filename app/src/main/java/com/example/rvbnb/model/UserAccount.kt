@@ -17,7 +17,7 @@ class Land(var owner_id: Int,
            var price_per_day: Double,
            var photo: String,
            @PrimaryKey(autoGenerate = true)
-           var id: Int/*, //Change to Url once grabbed
+           var id: Int = 100/*, //Change to Url once grabbed
            var dates: String, //TODO: this variable type needs to be changed?
            var timeSlot: MutableList<Reservation>?*/): Serializable //Made timeSlot nullable so LandOwners can add
                                                  //Land without reserving timeSlots
