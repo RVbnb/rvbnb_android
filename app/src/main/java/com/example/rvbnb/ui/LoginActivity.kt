@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity(), LoginRepo.LoginResponseCallback {
         setContentView(R.layout.activity_login)
         loginViewModel = LoginViewModel(this)
 
-        // Password is autmatically hidden as user types it in.
+        // Password is automatically hidden as user types it in.
         // When user clicks on the Show, it will show the password.
         // when user clicks on Hide, it will hide password.
         btn_show_hide.setOnClickListener {

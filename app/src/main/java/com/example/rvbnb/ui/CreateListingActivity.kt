@@ -5,10 +5,14 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.rvbnb.R
 import com.example.rvbnb.model.Land
 import com.example.rvbnb.retro.RvApiInstance
 import kotlinx.android.synthetic.main.activity_create_listing.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class CreateListingActivity : AppCompatActivity() {
 
@@ -55,9 +59,18 @@ class CreateListingActivity : AppCompatActivity() {
         }
     }
 
-    // TODO: Function to add Land Listing
     private fun addListing() {
         val rvApi = RvApiInstance.createRvApi()
-        rvApi.addLand(LoginActivity.tokenAndId.token, listing).enqueue(this)
+        rvApi.addLand(LoginActivity.tokenAndId.token, listing).enqueue(object: Callback<Void>{
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                Log.i("onResponse", "Successul")
+            }
+
+        })
+
     }
 }
