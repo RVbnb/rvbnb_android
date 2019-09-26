@@ -18,14 +18,12 @@ class Land(var owner_id: Int,
            @PrimaryKey(autoGenerate = true)
            var id: Int/*, //Change to Url once grabbed
            var dates: String, //TODO: this variable type needs to be changed?
-           var timeSlot: MutableList<TimeSlot>?*/) //Made timeSlot nullable so LandOwners can add
+           var timeSlot: MutableList<Reservation>?*/) //Made timeSlot nullable so LandOwners can add
                                                  //Land without reserving timeSlots
 
-class Reservations(listing: Land, reservations: MutableList<TimeSlot>)
+class Reservation(id: Int, listing_id: Int, user_id: Int, reserve_date_start: String, reserve_date_end: String)
 
-class TimeSlot(id: Int, listing_id: Int, user_id: Int, reserve_date_start: String, reserve_date_end: String)
-
-//class TimeSlot{
+//class Reservation{
 //    var startDate: String? = null
 //    var endDate: String? = null
 //    var date: String? = null
