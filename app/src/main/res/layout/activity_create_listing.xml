@@ -69,69 +69,69 @@
         app:layout_constraintTop_toBottomOf="@id/tv_listing_description"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
-    <TextView
-        android:id="@+id/tv_listing_availability"
-        android:text="@string/listing_availability"
-        style="@style/tv_login_register"
-        app:layout_constraintTop_toBottomOf="@+id/et_listing_description"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+<!--    <TextView-->
+<!--        android:id="@+id/tv_listing_availability"-->
+<!--        android:text="@string/listing_availability"-->
+<!--        style="@style/tv_login_register"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/et_listing_description"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"/>-->
 
-    <EditText
-        android:id="@+id/et_listing_availability_from"
-        android:hint=" From"
-        android:background="@drawable/edit_text_background"
-        android:textSize="20sp"
-        android:layout_width="96dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+<!--    <EditText-->
+<!--        android:id="@+id/et_listing_availability_from"-->
+<!--        android:hint=" From"-->
+<!--        android:background="@drawable/edit_text_background"-->
+<!--        android:textSize="20sp"-->
+<!--        android:layout_width="96dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="48dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:layout_marginBottom="4dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"/>-->
 
-    <ImageView
-        android:id="@+id/iv_listing_calendar_from"
-        android:src="@drawable/calendar"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_listing_calendar_from"-->
+<!--        android:src="@drawable/calendar"-->
+<!--        android:layout_width="20dp"-->
+<!--        android:layout_height="20dp"-->
+<!--        android:layout_marginLeft="120dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"/>-->
 
-    <TextView
-        android:id="@+id/tv_listing_dash"
-        android:text="-"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability"
-        app:layout_constraintLeft_toRightOf="@id/et_listing_availability_from"/>
+<!--    <TextView-->
+<!--        android:id="@+id/tv_listing_dash"-->
+<!--        android:text="-"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textSize="20sp"-->
+<!--        android:paddingLeft="4dp"-->
+<!--        android:paddingRight="4dp"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability"-->
+<!--        app:layout_constraintLeft_toRightOf="@id/et_listing_availability_from"/>-->
 
-    <EditText
-        android:id="@+id/et_listing_availability_to"
-        android:hint=" To"
-        android:background="@drawable/edit_text_background"
-        android:textSize="20sp"
-        android:layout_width="96dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability"
-        app:layout_constraintLeft_toRightOf="@id/tv_listing_dash" />
+<!--    <EditText-->
+<!--        android:id="@+id/et_listing_availability_to"-->
+<!--        android:hint=" To"-->
+<!--        android:background="@drawable/edit_text_background"-->
+<!--        android:textSize="20sp"-->
+<!--        android:layout_width="96dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:layout_marginBottom="4dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability"-->
+<!--        app:layout_constraintLeft_toRightOf="@id/tv_listing_dash" />-->
 
-    <ImageView
-        android:id="@+id/iv_listing_calendar_to"
-        android:src="@drawable/calendar"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginLeft="232dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_listing_calendar_to"-->
+<!--        android:src="@drawable/calendar"-->
+<!--        android:layout_width="20dp"-->
+<!--        android:layout_height="20dp"-->
+<!--        android:layout_marginLeft="232dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"/>-->
 
     <TextView
         android:id="@+id/tv_listing_price"
@@ -151,7 +151,7 @@
         android:layout_marginRight="48dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability"
+        app:layout_constraintTop_toBottomOf="@id/tv_listing_price"
         app:layout_constraintRight_toRightOf="parent"/>
 
     <Button
