@@ -35,9 +35,10 @@ interface RvApi {
     @GET("/api/listings/all/reservations")
     fun getAllReservations(@Header("Authorization")token: String): Call<Reservation>
 
+    //Function is pointless use getLandById, it gives more info! Unless you want less info...
     @GET("/api/listings/{id}/reservations")
-    fun getReservationsById(@Header("Authorization")token: String,
-                        @Path("id")id: Int): Call<MutableList<Reservation>>
+    fun getReservationsByLandId(@Header("Authorization")token: String,
+                        @Path("id")LandId: Int): Call<MutableList<Reservation>>
 
     @POST("/api/listings/{id}/reservations")
     fun postReservation(@Header("Authorization")token: String,

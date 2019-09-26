@@ -29,6 +29,7 @@ class DetailsActivity : AppCompatActivity() {
         title = "Land Details"
 
         val displayLand: Land = intent.getSerializableExtra(PlacesAdapter.LAND_KEY) as Land
+
         et_listing_address_details.setText(displayLand.location)
         //et_listing_availability_details.setText(displayLand.)
         et_listing_description_details.setText(displayLand.description)
