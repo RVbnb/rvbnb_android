@@ -16,7 +16,7 @@ interface RvApi {
 
     @GET("/api/listings/{id}")
     fun getLandById(@Header("Authorization")token: String,
-                              @Path("id")id: String): Call<Void>
+                              @Path("id")id: String): Call<Reservations>
 
     @POST(" /api/listings")
     fun addLand(@Header("Authorization")token: String,
