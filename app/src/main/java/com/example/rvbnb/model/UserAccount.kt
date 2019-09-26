@@ -2,6 +2,7 @@ package com.example.rvbnb.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 class UserAccount(val username: String,
                   val password: String,
@@ -18,8 +19,10 @@ class Land(var owner_id: Int,
            @PrimaryKey(autoGenerate = true)
            var id: Int/*, //Change to Url once grabbed
            var dates: String, //TODO: this variable type needs to be changed?
-           var timeSlot: MutableList<Reservation>?*/) //Made timeSlot nullable so LandOwners can add
+           var timeSlot: MutableList<Reservation>?*/): Serializable //Made timeSlot nullable so LandOwners can add
                                                  //Land without reserving timeSlots
+
+class Reservations(listing: Land, reservations: MutableList<Reservation>)
 
 class Reservation(id: Int, listing_id: Int, user_id: Int, reserve_date_start: String, reserve_date_end: String)
 
