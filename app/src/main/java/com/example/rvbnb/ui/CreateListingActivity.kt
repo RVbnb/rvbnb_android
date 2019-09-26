@@ -6,9 +6,13 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.rvbnb.R
+import com.example.rvbnb.model.Land
+import com.example.rvbnb.retro.RvApiInstance
 import kotlinx.android.synthetic.main.activity_create_listing.*
 
 class CreateListingActivity : AppCompatActivity() {
+
+    lateinit var listing: Land
 
     var photoUri: Uri? = null
 
@@ -49,5 +53,11 @@ class CreateListingActivity : AppCompatActivity() {
             photoUri = uri
             iv_listing.setImageURI(uri)
         }
+    }
+
+    // TODO: Function to add Land Listing
+    private fun addListing() {
+        val rvApi = RvApiInstance.createRvApi()
+        rvApi.addLand(LoginActivity.tokenAndId.token, listing).enqueue(this)
     }
 }
