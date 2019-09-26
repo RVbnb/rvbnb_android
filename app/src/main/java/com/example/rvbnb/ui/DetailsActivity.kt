@@ -48,11 +48,11 @@ class DetailsActivity : AppCompatActivity() {
 
 
         btn_listing_update_details.setOnClickListener {
-            val landUpdate = Land(LoginActivity.tokenAndId.id, 
-                et_listing_address_details.text.toString(),
-                et_listing_description_details.text.toString(),
-                et_listing_price_details.text.toString().toDouble(),
-                et_listing_url_details.text.toString())
+            val landUpdate = Land(LoginActivity.tokenAndId.id,                  //
+                et_listing_address_details.text.toString(),                 //
+                et_listing_description_details.text.toString(),                 //
+                et_listing_price_details.text.toString().toDouble(),                    //
+                et_listing_url_details.text.toString())                 //
             rvApi.updateLand(LoginActivity.tokenAndId.token, displayLand.id, landUpdate).enqueue(object: Callback<Void>{
                 override fun onFailure(call: Call<Void>, t: Throwable) {
                     Log.i("We had a success!", "Nope")
@@ -63,6 +63,8 @@ class DetailsActivity : AppCompatActivity() {
                     Log.i("We had a success!", "Yup")
                 }
             })
+            val updateIntent = Intent(this@DetailsActivity, LandownerActivity::class.java)
+            startActivity(updateIntent)
         }
 
 
@@ -108,12 +110,6 @@ class DetailsActivity : AppCompatActivity() {
         btn_listing_cancel_details.setOnClickListener {
             val cancelIntent = Intent(this, LandownerActivity::class.java)
             startActivity(cancelIntent)
-        }
-
-        btn_listing_update_details.setOnClickListener {
-            // TODO: add code for all of the parts that could be updated
-            val updateIntent = Intent(this, LandownerActivity::class.java)
-            startActivity(updateIntent)
         }
 
         btn_listing_delete_details.setOnClickListener {
