@@ -20,6 +20,7 @@ class LandownerActivity : AppCompatActivity(), Callback<Land>, LoginRepo.GetLand
         recyclerSetup(mutableList)
     }
 
+    // Sets up the recyclerview so that it shows up in the LandownerActivity.
     private fun recyclerSetup(list: MutableList<Land>){
         rv_places_item.setHasFixedSize(true)
         val manager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
@@ -40,8 +41,8 @@ class LandownerActivity : AppCompatActivity(), Callback<Land>, LoginRepo.GetLand
         setContentView(R.layout.activity_landowner)
         title = "Landowner"
 
-        rv_places_item.layoutManager = LinearLayoutManager(this@LandownerActivity)
-        rv_places_item.setHasFixedSize(true)
+        val loginRepo = LoginRepo(this)
+        loginRepo.retrieveLandList()
 
         // When user clicks on Profile Button, it will take user to Profile Page.
         btn_user_profile.setOnClickListener {
