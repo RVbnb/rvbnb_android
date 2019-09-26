@@ -1,5 +1,6 @@
 package com.example.rvbnb.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -32,7 +33,7 @@ class DetailsRVOwnerActivity : AppCompatActivity() {
 
         val rvApi = RvApiInstance.createRvApi()
         rvApi.getReservationsByLandId(LoginActivity.tokenAndId.token, displayLand.id)
-            .enqueue(object : Callback<MutableList<Reservation>>{
+            .enqueue(object : Callback<MutableList<Reservation>> {
                 override fun onFailure(call: Call<MutableList<Reservation>>, t: Throwable) {
                     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 }
@@ -41,15 +42,39 @@ class DetailsRVOwnerActivity : AppCompatActivity() {
                     call: Call<MutableList<Reservation>>,
                     response: Response<MutableList<Reservation>>
                 ) {
-                    if(response.body() != null){
+                    if (response.body() != null) {
                         val reservations = response.body()
                         recycler_reservations.setHasFixedSize(true)
-                        val manager = LinearLayoutManager(this@DetailsRVOwnerActivity, RecyclerView.VERTICAL, false)
+                        val manager = LinearLayoutManager(
+                            this@DetailsRVOwnerActivity,
+                            RecyclerView.VERTICAL,
+                            false
+                        )
                         recycler_reservations.layoutManager = manager
                         recycler_reservations.adapter = ReservationsAdapter(reservations!!)
                     }
                 }
             })
+
+        btn_reserve_details.setOnClickListener {
+            rvApi.postReservation(LoginActivity.tokenAndId.token, displayLand.id, Reservation(
+                300,
+                displayLand.id,
+                LoginActivity.tokenAndId.id,
+                "10/01/2019",
+                "10/02/2019"))
+                .enqueue(object : Callback<Void> {
+                    override fun onFailure(call: Call<Void>, t: Throwable) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+
+                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                        Log.i("onResponse", "Successful")
+                    }
+                })
+            val addReservationIntent = Intent(this, RVOwnerActivity::class.java)
+            startActivity(addReservationIntent)
+        }
 
         try {
             Picasso.get().load(displayLand.photo).into(iv_reserve_photo_details)
