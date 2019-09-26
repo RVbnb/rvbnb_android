@@ -16,6 +16,7 @@ import retrofit2.Response
 
 class LandownerActivity : AppCompatActivity(), Callback<Land>, LoginRepo.GetLandListCallback {
 
+    // Gets listings
     override fun getList(mutableList: MutableList<Land>) {
         recyclerSetup(mutableList)
     }
