@@ -55,6 +55,8 @@ class PlacesAdapter(private val listPlaces: MutableList<Land>): RecyclerView.Ada
             Log.i("BadStuff", "Yep")
         }
 
+//        sets intents of which activities to go to when land is selected and sends
+//        land object to the respective detail activities
         holder.card.setOnClickListener {
             lateinit var intent: Intent
             if (context is RVOwnerActivity){

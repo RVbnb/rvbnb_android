@@ -1,6 +1,5 @@
 package com.example.rvbnb.model
 
-import android.content.SharedPreferences
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable

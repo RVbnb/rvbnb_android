@@ -39,6 +39,8 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+
+    //    enables our ids to increment each time the app adds land or reservations
     override fun onDestroy() {
         super.onDestroy()
         App.savePreferences()

@@ -32,6 +32,7 @@ class CreateListingActivity : AppCompatActivity() {
             val price = et_listing_price.text.toString()
             val url = et_listing_url.text.toString()
 
+//            Code to check lot of potential user input problems and prevent app from crashing
             val regex = Regex("[.a-zA-Z]")
             if (location == "" || description == "" || price == "" || url == ""/* ||
                     price.contains(regex)*/){
@@ -52,6 +53,7 @@ class CreateListingActivity : AppCompatActivity() {
         }
     }
 
+//    function adds land to the list of reservable Lands
     private fun addListing(land: Land) {
         val rvApi = RvApiInstance.createRvApi()
         rvApi.addLand(LoginActivity.tokenAndId.token, land).enqueue(object: Callback<Void>{
@@ -60,13 +62,14 @@ class CreateListingActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                Log.i("onResponse", "Successul")
+                Log.i("onResponse", "Successful")
             }
 
         })
 
     }
 
+//    enables our ids to increment each time the app adds land or reservations
     override fun onDestroy() {
         super.onDestroy()
         App.savePreferences()
