@@ -8,6 +8,11 @@
     android:background="@color/background"
     tools:context=".ui.DetailsActivity">
 
+    <ScrollView
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <ImageView
         android:id="@+id/iv_listing_details"
         android:src="@drawable/image_placeholder"
@@ -45,7 +50,7 @@
 
     <TextView
         android:id="@+id/tv_listing_address_details"
-        android:text="@string/listing_address"
+        android:text="@string/listing_location"
         style="@style/tv_login_register"
         app:layout_constraintTop_toBottomOf="@+id/iv_listing_details"
         app:layout_constraintLeft_toLeftOf="parent"/>
@@ -70,56 +75,12 @@
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <TextView
-        android:id="@+id/tv_listing_availability_details"
-        android:text="@string/listing_availability"
-        style="@style/tv_login_register"
-        app:layout_constraintTop_toBottomOf="@+id/et_listing_description_details"
-        app:layout_constraintLeft_toLeftOf="parent"/>
-
-    <EditText
-        android:id="@+id/et_listing_availability_details_from"
-        android:hint="From"
-        android:background="@drawable/edit_text_background"
-        android:textSize="20sp"
-        android:layout_width="96dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability_details"
-        app:layout_constraintLeft_toLeftOf="parent"/>
-
-    <TextView
-        android:id="@+id/tv_listing_details_dash"
-        android:text="-"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability_details"
-        app:layout_constraintLeft_toRightOf="@id/et_listing_availability_details_from"/>
-
-    <EditText
-        android:id="@+id/et_listing_availability_details_to"
-        android:hint="To"
-        android:background="@drawable/edit_text_background"
-        android:textSize="20sp"
-        android:layout_width="96dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability_details"
-        app:layout_constraintLeft_toRightOf="@id/tv_listing_details_dash" />
-
-    <TextView
         android:id="@+id/tv_listing_price_details"
         style="@style/tv_login_register"
         android:layout_marginTop="8dp"
-        android:layout_marginRight="49dp"
+        android:layout_marginLeft="48dp"
         android:text="@string/listing_price"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_listing_description_details" />
 
     <EditText
@@ -128,22 +89,24 @@
         android:textSize="20sp"
         android:layout_width="96dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="48dp"
+        android:layout_marginLeft="48dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_listing_availability_details"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_listing_price_details"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_reservations_landowner"
         tools:listitem="@layout/reservations_item"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:layout_width="0dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/et_listing_price_details"
         app:layout_constraintBottom_toTopOf="@+id/btn_listing_update_details"
-        app:layout_constraintLeft_toLeftOf="@+id/tv_listing_availability_details"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_listing_price_details"
         app:layout_constraintRight_toRightOf="@+id/tv_listing_price_details"/>
 
     <Button
@@ -187,5 +150,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/btn_listing_update_details"
         app:layout_constraintRight_toRightOf="parent"/>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
