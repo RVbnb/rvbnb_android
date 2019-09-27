@@ -39,7 +39,8 @@
     <EditText
         android:id="@+id/et_username"
         style="@style/et_box"
-        android:lines="1"
+        android:inputType="text"
+        android:maxLines="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_username"
@@ -57,7 +58,7 @@
         android:id="@+id/et_password"
         style="@style/et_box"
         android:inputType="textPassword"
-        android:lines="1"
+        android:maxLines="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tv_password"
