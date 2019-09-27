@@ -43,6 +43,8 @@ class LandownerActivity : AppCompatActivity()/*, Callback<Land>*/, LoginRepo.Get
         setContentView(R.layout.activity_landowner)
         title = "Landowner"
 
+        rv_places_item.adapter?.notifyDataSetChanged()
+
         val loginRepo = LoginRepo(this)
         loginRepo.retrieveLandList()
 

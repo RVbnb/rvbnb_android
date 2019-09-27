@@ -38,6 +38,7 @@ class DetailsActivity : AppCompatActivity() {
         //et_listing_availability_details.setText(displayLand.)
         et_listing_description_details.setText(displayLand.description)
         et_listing_price_details.setText(displayLand.price_per_day.toString())
+        et_listing_url_details.setText(displayLand.photo)
 
 //        var urlString = "https://scx1.b-cdn.net/csz/news/800/2018/3-ocean.jpg"
 
