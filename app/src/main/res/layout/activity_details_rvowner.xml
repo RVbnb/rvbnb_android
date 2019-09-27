@@ -53,6 +53,7 @@
     <EditText
         android:id="@+id/et_reserve_availability_details_from"
         android:hint="From"
+        android:inputType="date"
         android:background="@drawable/edit_text_background"
         android:textSize="20sp"
         android:layout_width="96dp"
@@ -88,6 +89,7 @@
     <EditText
         android:id="@+id/et_reserve_availability_details_to"
         android:hint="To"
+        android:inputType="date"
         android:background="@drawable/edit_text_background"
         android:textSize="20sp"
         android:layout_width="96dp"

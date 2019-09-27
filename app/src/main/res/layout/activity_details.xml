@@ -67,6 +67,7 @@
 
     <EditText
         android:id="@+id/et_listing_price_details"
+        android:inputType="numberDecimal"
         android:background="@drawable/edit_text_background"
         android:textSize="20sp"
         android:layout_width="96dp"
