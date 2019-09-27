@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rvbnb.R
 import com.example.rvbnb.model.Reservation
+import com.example.rvbnb.ui.LoginActivity
 import kotlinx.android.synthetic.main.reservations_item.view.*
 
 class ReservationsAdapter(private val reservations: MutableList<Reservation>):
@@ -41,9 +42,12 @@ class ReservationsAdapter(private val reservations: MutableList<Reservation>):
 //        color changes on reservations when clicked. Last selection is selected item.
         holder.content.setBackgroundColor(ContextCompat.getColor(context, android.R.color.background_light))
 
+
         holder.content.setOnClickListener {
-            reservationId = reservation.id
-            holder.content.setBackgroundColor(Color.CYAN)
+            if (!LoginActivity.tokenAndId.is_land_owner){
+                reservationId = reservation.id
+                holder.content.setBackgroundColor(Color.CYAN)
+            }
         }
 
         //Setup reserved date(s) to be displayed in Recycler Item.
