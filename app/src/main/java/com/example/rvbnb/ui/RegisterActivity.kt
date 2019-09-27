@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.rvbnb.R
+import com.example.rvbnb.repo.App
 import com.example.rvbnb.viewmodel.RegisterViewModel
 import kotlinx.android.synthetic.main.activity_register.*
 
@@ -36,5 +37,10 @@ class RegisterActivity : AppCompatActivity() {
             // TODO: Need to pass registration information to Profile Page.
             // TODO: Make blank user invalid option.
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        App.savePreferences()
     }
 }

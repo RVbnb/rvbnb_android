@@ -8,6 +8,7 @@ import android.text.method.PasswordTransformationMethod
 import android.widget.Toast
 import com.example.rvbnb.R
 import com.example.rvbnb.model.AcceptResponse
+import com.example.rvbnb.repo.App
 import com.example.rvbnb.repo.LoginRepo
 import com.example.rvbnb.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_login.*
@@ -57,5 +58,10 @@ class LoginActivity : AppCompatActivity(), LoginRepo.LoginResponseCallback {
             val registerIntent = Intent(this, RegisterActivity::class.java)
             startActivity(registerIntent)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        App.savePreferences()
     }
 }

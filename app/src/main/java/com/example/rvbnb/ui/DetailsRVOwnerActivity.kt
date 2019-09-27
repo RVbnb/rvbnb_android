@@ -11,6 +11,7 @@ import com.example.rvbnb.adapter.PlacesAdapter
 import com.example.rvbnb.adapter.ReservationsAdapter
 import com.example.rvbnb.model.Land
 import com.example.rvbnb.model.Reservation
+import com.example.rvbnb.repo.App
 import com.example.rvbnb.retro.RvApi
 import com.example.rvbnb.retro.RvApiInstance
 import com.squareup.picasso.Picasso
@@ -43,7 +44,7 @@ class DetailsRVOwnerActivity : AppCompatActivity() {
 
         btn_reserve_details.setOnClickListener {
             rvApi.postReservation(LoginActivity.tokenAndId.token, displayLand.id, Reservation(
-                300,
+                App.idCounter++,
                 displayLand.id,
                 LoginActivity.tokenAndId.id,
                 et_reserve_availability_details_from.text.toString(),
@@ -100,5 +101,10 @@ class DetailsRVOwnerActivity : AppCompatActivity() {
                     }
                 }
             })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        App.savePreferences()
     }
 }

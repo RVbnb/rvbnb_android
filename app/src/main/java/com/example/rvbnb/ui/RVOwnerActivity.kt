@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.rvbnb.R
 import com.example.rvbnb.adapter.PlacesAdapter
 import com.example.rvbnb.model.Land
+import com.example.rvbnb.repo.App
 import com.example.rvbnb.repo.LoginRepo
 import com.example.rvbnb.retro.RvApi
 import kotlinx.android.synthetic.main.activity_rvowner.*
@@ -17,12 +18,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RVOwnerActivity : AppCompatActivity(), Callback<Land>, LoginRepo.GetLandListCallback {
+class RVOwnerActivity : AppCompatActivity(),/*Callback<Land>,*/  LoginRepo.GetLandListCallback {
 
     lateinit var rvApi: RvApi
 
+    private var landToSearch = mutableListOf<Land>()
+
     override fun getList(mutableList: MutableList<Land>) {
         recyclerSetup(mutableList)
+        landToSearch = mutableList
     }
 
     private fun recyclerSetup(list: MutableList<Land>){
@@ -32,20 +36,20 @@ class RVOwnerActivity : AppCompatActivity(), Callback<Land>, LoginRepo.GetLandLi
         recycler_rv.adapter = PlacesAdapter(list)
     }
 
-    override fun onFailure(call: Call<Land>, t: Throwable) {
-        t.printStackTrace()
-        val response = "Failure; ${t.printStackTrace()}"
-        Toast.makeText(this@RVOwnerActivity, response, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onResponse(call: Call<Land>, response: Response<Land>) {
-        if (response.isSuccessful) {
-
-        } else {
-            val response = "Response not succuessful; ${response.errorBody().toString()}"
-            Toast.makeText(this@RVOwnerActivity, response, Toast.LENGTH_SHORT).show()
-        }
-    }
+//    override fun onFailure(call: Call<Land>, t: Throwable) {
+//        t.printStackTrace()
+//        val response = "Failure; ${t.printStackTrace()}"
+//        Toast.makeText(this@RVOwnerActivity, response, Toast.LENGTH_SHORT).show()
+//    }
+//
+//    override fun onResponse(call: Call<Land>, response: Response<Land>) {
+//        if (response.isSuccessful) {
+//
+//        } else {
+//            val response = "Response not succuessful; ${response.errorBody().toString()}"
+//            Toast.makeText(this@RVOwnerActivity, response, Toast.LENGTH_SHORT).show()
+//        }
+//    }
 
     // TODO: Need to figure out how to incorporate the token here? Do you need the token to do a search?
 //    private fun searchLand(token: String) {
@@ -72,6 +76,19 @@ class RVOwnerActivity : AppCompatActivity(), Callback<Land>, LoginRepo.GetLandLi
             startActivity(logoutIntent)
         }
 
+
+
+        iv_search_rv.setOnClickListener{
+            val userSearch = et_search.text.toString()
+            var mySearchList = mutableListOf<Land>()
+            landToSearch.forEach {
+                if(it.location.contains(userSearch)){
+                    mySearchList.add(it)
+                }
+            }
+            recyclerSetup(mySearchList)
+        }
+
         // When user clicks on Search Button, it will populate listings based on search.
         // TODO: Need to fix fun searchLand for this to work
 //        iv_search_rv.setOnClickListener {
@@ -84,8 +101,13 @@ class RVOwnerActivity : AppCompatActivity(), Callback<Land>, LoginRepo.GetLandLi
     fun onDetailsRVOwner (land: Land) {
         llayout_places.setOnClickListener {
             val viewListingIntent = Intent(this, DetailsRVOwnerActivity::class.java)
-            intent.putExtra("LAND_ENTRY_ID", land?.id)
+            intent.putExtra("LAND_ENTRY_ID", land.id)
             startActivity(viewListingIntent)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        App.savePreferences()
     }
 }

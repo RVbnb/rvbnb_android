@@ -1,5 +1,6 @@
 package com.example.rvbnb.model
 
+import android.content.SharedPreferences
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
@@ -17,7 +18,7 @@ class Land(var owner_id: Int,
            var price_per_day: Double,
            var photo: String,
            @PrimaryKey(autoGenerate = true)
-           var id: Int = 202/*, //Change to Url once grabbed
+           var id: Int/*, //Change to Url once grabbed
            var dates: String, //TODO: this variable type needs to be changed?
            var timeSlot: MutableList<Reservation>?*/): Serializable //Made timeSlot nullable so LandOwners can add
                                                  //Land without reserving timeSlots
@@ -26,24 +27,3 @@ class Reservations(listing: Land, reservations: MutableList<Reservation>)
 
 class Reservation(var id: Int, var listing_id: Int, var user_id: Int, var reserve_date_start: String, var reserve_date_end: String)
 
-//class Reservation{
-//    var startDate: String? = null
-//    var endDate: String? = null
-//    var date: String? = null
-//    var userName: String? = null
-//
-//    constructor(username: String,
-//                startDate: String,
-//                endDate: String){
-//        this.userName = username
-//        this.startDate = startDate
-//        this.endDate = endDate
-//    }
-//
-//
-//    constructor(userName: String,
-//                date: String){
-//        this.userName = userName
-//        this.date = date
-//    }
-//}
