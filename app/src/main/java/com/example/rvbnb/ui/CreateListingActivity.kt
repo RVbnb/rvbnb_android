@@ -70,8 +70,8 @@ class CreateListingActivity : AppCompatActivity() {
             val url = et_listing_url.text.toString()
 
             val regex = Regex("[.a-zA-Z]")
-            if (location == "" || description == "" || price == "" || url == "" ||
-                    price.contains(regex)){
+            if (location == "" || description == "" || price == "" || url == ""/* ||
+                    price.contains(regex)*/){
                 Toast.makeText(this, "Fields must not be blank, \n Url must be for a jpg, png, bmp, or jpeg \n Price only allows one decimal and numbers", Toast.LENGTH_LONG).show()
 
             }else if (url.contains(".jpg") || url.contains(".png") || url.contains(".bmp")
