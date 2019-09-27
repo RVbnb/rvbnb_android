@@ -12,13 +12,12 @@ import com.example.rvbnb.repo.App
 import com.example.rvbnb.repo.LoginRepo
 import kotlinx.android.synthetic.main.activity_landowner.*
 
-class LandownerActivity : AppCompatActivity()/*, Callback<Land>*/, LoginRepo.GetLandListCallback {
+class LandownerActivity : AppCompatActivity(), LoginRepo.GetLandListCallback {
 
     // Gets listings
     override fun getList(mutableList: MutableList<Land>) {
         recyclerSetup(mutableList)
     }
-
 
     // Sets up the recyclerview so that it shows up in the LandownerActivity.
     private fun recyclerSetup(list: MutableList<Land>){
@@ -28,20 +27,10 @@ class LandownerActivity : AppCompatActivity()/*, Callback<Land>*/, LoginRepo.Get
         rv_places_item.adapter = PlacesAdapter(list)
     }
 
-//    override fun onFailure(call: Call<Land>, t: Throwable) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//    }
-//
-//    override fun onResponse(call: Call<Land>, response: Response<Land>) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landowner)
         title = "Landowner"
-
-        rv_places_item.adapter?.notifyDataSetChanged()
 
         val loginRepo = LoginRepo(this)
         loginRepo.retrieveLandList()
@@ -63,6 +52,8 @@ class LandownerActivity : AppCompatActivity()/*, Callback<Land>*/, LoginRepo.Get
             val logoutIntent = Intent(this, LoginActivity::class.java)
             startActivity(logoutIntent)
         }
+
+        rv_places_item.adapter?.notifyDataSetChanged()
     }
 
 
