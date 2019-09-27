@@ -30,19 +30,6 @@
         app:layout_constraintTop_toBottomOf="@id/tv_listing_url_details"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
-    <!-- <TextView
-        android:id="@+id/tv_listing_name_details"
-        android:text="@string/listing_name"
-        style="@style/tv_login_register"
-        app:layout_constraintTop_toBottomOf="@+id/iv_listing_details"
-        app:layout_constraintLeft_toLeftOf="parent"/> -->
-
-    <!-- <EditText
-        android:id="@+id/et_listing_name_details"
-        style="@style/et_box"
-        app:layout_constraintTop_toBottomOf="@id/iv_listing_name_details"
-        app:layout_constraintLeft_toLeftOf="parent"/> -->
-
     <TextView
         android:id="@+id/tv_listing_address_details"
         android:text="@string/listing_location"
