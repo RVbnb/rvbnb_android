@@ -169,20 +169,7 @@
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/btn_reserve_delete_details"
-        app:layout_constraintRight_toLeftOf="@id/btn_reserve_update_details"/>
-
-    <Button
-        android:id="@+id/btn_reserve_update_details"
-        android:text="Update"
-        android:textSize="16sp"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/rounded_corner_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/btn_reserve_details"
         app:layout_constraintRight_toRightOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
