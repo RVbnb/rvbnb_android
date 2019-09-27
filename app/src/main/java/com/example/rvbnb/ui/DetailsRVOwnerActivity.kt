@@ -1,6 +1,8 @@
 package com.example.rvbnb.ui
 
+import android.app.DatePickerDialog
 import android.content.Intent
+import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -40,6 +42,28 @@ class DetailsRVOwnerActivity : AppCompatActivity() {
             Picasso.get().load(displayLand.photo).into(iv_reserve_photo_details)
         }catch (e: Exception){
             Log.i("BadStuff", "Yep")
+        }
+
+        // Calendar Picker
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        // When user clicks on the Calendar icon in the From box, a calendar will pop up so that the user can select the start date.
+        iv_listing_calendar_from.setOnClickListener {
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+                et_reserve_availability_details_from.setText(""+ (mMonth+1) +"/"+ mDay +"/"+ mYear)
+            }, year, month, day)
+            dpd.show()
+        }
+
+        // When user clicks on the Calendar icon in the To box, a calendar will pop up so that the user can select the end date.
+        iv_listing_calendar_to.setOnClickListener {
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+                et_reserve_availability_details_to.setText(""+ (mMonth+1) +"/"+ mDay +"/"+ mYear)
+            }, year, month, day)
+            dpd.show()
         }
 
         btn_reserve_details.setOnClickListener {
