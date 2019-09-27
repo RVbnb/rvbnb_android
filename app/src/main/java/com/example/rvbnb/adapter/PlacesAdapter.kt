@@ -11,6 +11,7 @@ import com.example.rvbnb.R
 import com.example.rvbnb.model.Land
 import com.example.rvbnb.ui.DetailsActivity
 import com.example.rvbnb.ui.DetailsRVOwnerActivity
+import com.example.rvbnb.ui.LoginActivity
 import com.example.rvbnb.ui.RVOwnerActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.places_item.view.*
@@ -58,16 +59,19 @@ class PlacesAdapter(private val listPlaces: MutableList<Land>): RecyclerView.Ada
 //        land object to the respective detail activities
         holder.card.setOnClickListener {
             lateinit var intent: Intent
-            if (context is RVOwnerActivity){
-                intent = Intent(context, DetailsRVOwnerActivity::class.java)
-                intent.putExtra(LAND_KEY, place)
-                context.startActivity(intent)
-            }else{
+
+            // if landOwner and Land is landOwner's
+            if (LoginActivity.tokenAndId.is_land_owner && place.owner_id == LoginActivity.tokenAndId.id){
                 intent = Intent(context, DetailsActivity::class.java)
                 intent.putExtra(LAND_KEY, place)
                 context.startActivity(intent)
             }
 
+            if (context is RVOwnerActivity){
+                intent = Intent(context, DetailsRVOwnerActivity::class.java)
+                intent.putExtra(LAND_KEY, place)
+                context.startActivity(intent)
+            }
         }
     }
 }

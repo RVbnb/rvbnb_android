@@ -29,15 +29,13 @@ class DetailsActivity : AppCompatActivity() {
         val rvApi = RvApiInstance.createRvApi()
         val displayLand: Land = intent.getSerializableExtra(PlacesAdapter.LAND_KEY) as Land
 
+//        Setup EditTexts for edit upon opening activity.
         et_listing_address_details.setText(displayLand.location)
-        //et_listing_availability_details.setText(displayLand.)
         et_listing_description_details.setText(displayLand.description)
         et_listing_price_details.setText(displayLand.price_per_day.toString())
         et_listing_url_details.setText(displayLand.photo)
 
-//        var urlString = "https://scx1.b-cdn.net/csz/news/800/2018/3-ocean.jpg"
-
-
+//        Grabs EditText fields to update Land object in backend
         btn_listing_update_details.setOnClickListener {
             val landUpdate = Land(LoginActivity.tokenAndId.id,                  //
                 et_listing_address_details.text.toString(),                 //

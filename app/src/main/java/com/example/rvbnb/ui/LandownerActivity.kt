@@ -19,6 +19,7 @@ class LandownerActivity : AppCompatActivity()/*, Callback<Land>*/, LoginRepo.Get
         recyclerSetup(mutableList)
     }
 
+
     // Sets up the recyclerview so that it shows up in the LandownerActivity.
     private fun recyclerSetup(list: MutableList<Land>){
         rv_places_item.setHasFixedSize(true)
