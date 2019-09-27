@@ -11,6 +11,7 @@ import com.example.rvbnb.adapter.PlacesAdapter
 import com.example.rvbnb.adapter.ReservationsAdapter
 import com.example.rvbnb.model.Land
 import com.example.rvbnb.model.Reservation
+import com.example.rvbnb.retro.RvApi
 import com.example.rvbnb.retro.RvApiInstance
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_details_rvowner.*
@@ -31,6 +32,51 @@ class DetailsRVOwnerActivity : AppCompatActivity() {
         tv_reserve_description_details.text = displayLand.description
 
         val rvApi = RvApiInstance.createRvApi()
+
+        showReservationsList(displayLand, rvApi)
+
+        try {
+            Picasso.get().load(displayLand.photo).into(iv_reserve_photo_details)
+        }catch (e: Exception){
+            Log.i("BadStuff", "Yep")
+        }
+
+        btn_reserve_details.setOnClickListener {
+            rvApi.postReservation(LoginActivity.tokenAndId.token, displayLand.id, Reservation(
+                300,
+                displayLand.id,
+                LoginActivity.tokenAndId.id,
+                "10/01/2019",
+                "10/02/2019"))
+                .enqueue(object : Callback<Void> {
+                    override fun onFailure(call: Call<Void>, t: Throwable) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+
+                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                        Log.i("onResponse", "Successful")
+                        showReservationsList(displayLand, rvApi)
+                    }
+                })
+        }
+
+        btn_reserve_delete_details.setOnClickListener {
+            rvApi.deleteReservation(LoginActivity.tokenAndId.token, ReservationsAdapter.reservationId).enqueue(object: Callback<Void> {
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    Log.i("onResponse", "Successful")
+                    showReservationsList(displayLand, rvApi)
+                }
+
+            })
+        }
+
+    }
+
+    fun showReservationsList(displayLand: Land, rvApi: RvApi){
         rvApi.getReservationsByLandId(LoginActivity.tokenAndId.token, displayLand.id)
             .enqueue(object : Callback<MutableList<Reservation>> {
                 override fun onFailure(call: Call<MutableList<Reservation>>, t: Throwable) {
@@ -54,45 +100,5 @@ class DetailsRVOwnerActivity : AppCompatActivity() {
                     }
                 }
             })
-
-        try {
-            Picasso.get().load(displayLand.photo).into(iv_reserve_photo_details)
-        }catch (e: Exception){
-            Log.i("BadStuff", "Yep")
-        }
-
-        btn_reserve_details.setOnClickListener {
-            rvApi.postReservation(LoginActivity.tokenAndId.token, displayLand.id, Reservation(
-                300,
-                displayLand.id,
-                LoginActivity.tokenAndId.id,
-                "10/01/2019",
-                "10/02/2019"))
-                .enqueue(object : Callback<Void> {
-                    override fun onFailure(call: Call<Void>, t: Throwable) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
-
-                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                        Log.i("onResponse", "Successful")
-                    }
-                })
-            val addReservationIntent = Intent(this, RVOwnerActivity::class.java)
-            startActivity(addReservationIntent)
-        }
-
-        btn_reserve_delete_details.setOnClickListener {
-            rvApi.deleteReservation(LoginActivity.tokenAndId.token, displayLand.id).enqueue(object: Callback<Void> {
-                override fun onFailure(call: Call<Void>, t: Throwable) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
-
-                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                    Log.i("onResponse", "Successful")
-                }
-
-            })
-        }
-
     }
 }
