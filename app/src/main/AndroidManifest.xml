@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme"
         android:name=".repo.App">
         <activity android:name=".ui.DetailsActivity"></activity>
-        <activity android:name=".ui.CreateListingActivity" />
+        <activity android:name=".ui.CreateListingActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".ui.ProfileActivity" />
         <activity android:name=".ui.RVOwnerActivity" />
         <activity android:name=".ui.LandownerActivity" />
