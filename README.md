@@ -8,7 +8,9 @@ RVbnb is a great app that connects landowners and RV owners together.
 
 ## Login/Register Pages:
 The user must login as either a Landowner or a RV Owner (must sign in as the account they registered for). If the user does not have an account, they can click on the "Register" button. On the registration page, the user must select whether they are registering as a Landowner or a RV Owner.
-<img src="images/login.png" alt="applauncher" width="360px">
+
+<img src="images/login.png" alt="applauncher" width="280px">
+<img src="images/registration.png" alt="applauncher" width="280px">
 
 
 Landowners:
