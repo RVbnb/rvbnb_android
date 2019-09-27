@@ -3,6 +3,7 @@ package com.example.rvbnb.repo
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.AsyncTask
 import android.util.Log
 import androidx.room.Room
 import com.example.rvbnb.db.DatabaseManagementInterface
@@ -38,6 +39,29 @@ class App: Application(){
         sharedPrefs = getSharedPreferences("Shared Preferences", Context.MODE_PRIVATE)
         idCounter = sharedPrefs.getInt(PREF_KEY, 500)
 
+
+    }
+}
+
+class BuildAsyncTask(private val context: Context): AsyncTask<Void, Void, MutableList<Land>>(){
+    interface CreateLandList{
+        fun getLandList(landList: MutableList<Land>)
+    }
+
+    var listener: CreateLandList? = null
+
+    override fun doInBackground(vararg p0: Void?): MutableList<Land> {
+        return App.repository!!.buildLandList()
+    }
+
+    override fun onPostExecute(result: MutableList<Land>?) {
+        super.onPostExecute(result)
+        if (context is CreateLandList){
+            listener = context
+            if (result != null){
+                listener?.getLandList(result)
+            }
+        }
 
     }
 }
@@ -138,5 +162,11 @@ class LoginRepo(private val context: Context): DatabaseManagementInterface {
 
     override fun cancelReservation() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}
+
+class AddLandAsync(private val land: Land):AsyncTask<Void, Void, Unit>(){
+    override fun doInBackground(vararg p0: Void?) {
+        App.repository?.addLand(land)
     }
 }

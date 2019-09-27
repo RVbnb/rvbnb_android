@@ -1,6 +1,8 @@
 package com.example.rvbnb.ui
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.rvbnb.R
 import com.example.rvbnb.adapter.PlacesAdapter
 import com.example.rvbnb.model.Land
+import com.example.rvbnb.repo.AddLandAsync
 import com.example.rvbnb.repo.App
+import com.example.rvbnb.repo.BuildAsyncTask
 import com.example.rvbnb.repo.LoginRepo
 import com.example.rvbnb.retro.RvApi
 import kotlinx.android.synthetic.main.activity_rvowner.*
@@ -18,15 +22,36 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RVOwnerActivity : AppCompatActivity(),/*Callback<Land>,*/  LoginRepo.GetLandListCallback {
+class RVOwnerActivity : AppCompatActivity(),/*Callback<Land>,*/  LoginRepo.GetLandListCallback, BuildAsyncTask.CreateLandList {
 
     lateinit var rvApi: RvApi
 
     private var landToSearch = mutableListOf<Land>()
 
+    fun isConnectionUp(): Boolean{
+        val connectManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkConnection = connectManager.activeNetworkInfo
+        return networkConnection.isConnected
+    }
+
+// Gets Land from backend
     override fun getList(mutableList: MutableList<Land>) {
-        recyclerSetup(mutableList)
-        landToSearch = mutableList
+        if (isConnectionUp()){
+            recyclerSetup(mutableList)
+            landToSearch = mutableList
+            mutableList.forEach {
+                AddLandAsync(it).execute()
+            }
+        }
+    }
+
+    // Gets Land from SQL CRUD(persistence, internal storage)
+    override fun getLandList(landList: MutableList<Land>) {
+        recyclerSetup(landList)
+        landToSearch = landList
+//        if(!isConnectionUp()){
+//
+//        }
     }
 
     private fun recyclerSetup(list: MutableList<Land>){
@@ -76,7 +101,7 @@ class RVOwnerActivity : AppCompatActivity(),/*Callback<Land>,*/  LoginRepo.GetLa
             startActivity(logoutIntent)
         }
 
-
+        BuildAsyncTask(this).execute()
 
         iv_search_rv.setOnClickListener{
             val userSearch = et_search.text.toString()
