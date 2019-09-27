@@ -68,6 +68,7 @@
 
     <EditText
         android:id="@+id/et_listing_price"
+        android:paddingStart="4dp"
         android:inputType="numberDecimal"
         android:layout_width="96dp"
         android:layout_height="wrap_content"

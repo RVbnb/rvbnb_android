@@ -52,6 +52,7 @@
 
     <EditText
         android:id="@+id/et_reserve_availability_details_from"
+        android:paddingStart="4dp"
         android:hint="From"
         android:inputType="date"
         android:background="@drawable/edit_text_background"
@@ -88,6 +89,7 @@
 
     <EditText
         android:id="@+id/et_reserve_availability_details_to"
+        android:paddingStart="4dp"
         android:hint="To"
         android:inputType="date"
         android:background="@drawable/edit_text_background"

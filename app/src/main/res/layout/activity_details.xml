@@ -19,6 +19,7 @@
 
     <TextView
         android:id="@+id/tv_listing_url_details"
+        android:paddingStart="4dp"
         android:text="@string/image_url"
         style="@style/tv_login_register"
         app:layout_constraintTop_toTopOf="parent"
@@ -67,6 +68,7 @@
 
     <EditText
         android:id="@+id/et_listing_price_details"
+        android:paddingStart="4dp"
         android:inputType="numberDecimal"
         android:background="@drawable/edit_text_background"
         android:textSize="20sp"
