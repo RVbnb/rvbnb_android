@@ -46,8 +46,8 @@ class DetailsRVOwnerActivity : AppCompatActivity() {
                 300,
                 displayLand.id,
                 LoginActivity.tokenAndId.id,
-                "10/01/2019",
-                "10/02/2019"))
+                et_reserve_availability_details_from.text.toString(),
+                et_reserve_availability_details_to.text.toString()))
                 .enqueue(object : Callback<Void> {
                     override fun onFailure(call: Call<Void>, t: Throwable) {
                         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
