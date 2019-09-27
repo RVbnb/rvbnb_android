@@ -80,7 +80,8 @@ class CreateListingActivity : AppCompatActivity() {
                     location,
                     description,
                     price.toDouble(),
-                    url))
+                    url,
+                    App.idCounter++))
 
                 val addListingIntent = Intent(this, LandownerActivity::class.java)
                 startActivity(addListingIntent)

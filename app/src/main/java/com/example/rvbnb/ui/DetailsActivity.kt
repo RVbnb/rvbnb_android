@@ -47,7 +47,7 @@ class DetailsActivity : AppCompatActivity() {
                 et_listing_address_details.text.toString(),                 //
                 et_listing_description_details.text.toString(),                 //
                 et_listing_price_details.text.toString().toDouble(),                    //
-                et_listing_url_details.text.toString())                 //
+                et_listing_url_details.text.toString(), displayLand.id)                 //
             rvApi.updateLand(LoginActivity.tokenAndId.token, displayLand.id, landUpdate).enqueue(object: Callback<Void>{
                 override fun onFailure(call: Call<Void>, t: Throwable) {
                     Log.i("We had a success!", "Nope")

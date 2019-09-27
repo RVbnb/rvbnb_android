@@ -44,7 +44,7 @@ class DetailsRVOwnerActivity : AppCompatActivity() {
 
         btn_reserve_details.setOnClickListener {
             rvApi.postReservation(LoginActivity.tokenAndId.token, displayLand.id, Reservation(
-                300,
+                App.idCounter++,
                 displayLand.id,
                 LoginActivity.tokenAndId.id,
                 et_reserve_availability_details_from.text.toString(),
