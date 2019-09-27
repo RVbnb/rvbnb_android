@@ -1,9 +1,6 @@
 package com.example.rvbnb.ui
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.BitmapFactory
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,11 +15,9 @@ import com.example.rvbnb.repo.App
 import com.example.rvbnb.retro.RvApiInstance
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_details.*
-import kotlinx.android.synthetic.main.activity_details_rvowner.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.InputStream
 
 class DetailsActivity : AppCompatActivity() {
 
