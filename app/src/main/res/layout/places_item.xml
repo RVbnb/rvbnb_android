@@ -35,7 +35,7 @@
             android:id="@+id/tv_listing_address_listview"
             android:layout_margin="4dp"
             android:textSize="16sp"
-            android:text="@string/listing_address"
+            android:text="@string/listing_location"
             android:layout_gravity="left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
