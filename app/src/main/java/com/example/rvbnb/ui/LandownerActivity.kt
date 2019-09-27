@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.rvbnb.R
 import com.example.rvbnb.adapter.PlacesAdapter
 import com.example.rvbnb.model.Land
+import com.example.rvbnb.repo.App
 import com.example.rvbnb.repo.LoginRepo
 import kotlinx.android.synthetic.main.activity_landowner.*
 import retrofit2.Call
@@ -62,5 +63,10 @@ class LandownerActivity : AppCompatActivity()/*, Callback<Land>*/, LoginRepo.Get
             val logoutIntent = Intent(this, LoginActivity::class.java)
             startActivity(logoutIntent)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        App.savePreferences()
     }
 }

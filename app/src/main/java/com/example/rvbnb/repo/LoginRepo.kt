@@ -2,6 +2,7 @@ package com.example.rvbnb.repo
 
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.room.Room
 import com.example.rvbnb.db.DatabaseManagementInterface
@@ -18,11 +19,26 @@ import retrofit2.Response
 class App: Application(){
     companion object{
         var repository: DatabaseManagementInterface? = null
+
+        const val PREF_KEY = "pref"
+        lateinit var sharedPrefs: SharedPreferences
+        var idCounter = 500
+
+        fun savePreferences(){
+            sharedPrefs.let {
+                it.edit().putInt(PREF_KEY, idCounter).commit()
+            }
+        }
     }
 
     override fun onCreate() {
         super.onCreate()
         repository = LoginRepo(applicationContext)
+
+        sharedPrefs = getSharedPreferences("Shared Preferences", Context.MODE_PRIVATE)
+        idCounter = sharedPrefs.getInt(PREF_KEY, 500)
+
+
     }
 }
 

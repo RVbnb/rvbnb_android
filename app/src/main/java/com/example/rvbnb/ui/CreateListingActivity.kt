@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import com.example.rvbnb.R
 import com.example.rvbnb.model.Land
+import com.example.rvbnb.repo.App
 import com.example.rvbnb.retro.RvApiInstance
 import kotlinx.android.synthetic.main.activity_create_listing.*
 import retrofit2.Call
@@ -110,5 +111,10 @@ class CreateListingActivity : AppCompatActivity() {
 
         })
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        App.savePreferences()
     }
 }

@@ -11,6 +11,7 @@ import com.example.rvbnb.adapter.PlacesAdapter
 import com.example.rvbnb.adapter.ReservationsAdapter
 import com.example.rvbnb.model.Land
 import com.example.rvbnb.model.Reservation
+import com.example.rvbnb.repo.App
 import com.example.rvbnb.retro.RvApi
 import com.example.rvbnb.retro.RvApiInstance
 import com.squareup.picasso.Picasso
@@ -100,5 +101,10 @@ class DetailsRVOwnerActivity : AppCompatActivity() {
                     }
                 }
             })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        App.savePreferences()
     }
 }

@@ -14,6 +14,7 @@ import com.example.rvbnb.adapter.PlacesAdapter
 import com.example.rvbnb.adapter.ReservationsAdapter
 import com.example.rvbnb.model.Land
 import com.example.rvbnb.model.Reservation
+import com.example.rvbnb.repo.App
 import com.example.rvbnb.retro.RvApiInstance
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_details.*
@@ -109,5 +110,10 @@ class DetailsActivity : AppCompatActivity() {
             val deleteIntent = Intent(this, LandownerActivity::class.java)
             startActivity(deleteIntent)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        App.savePreferences()
     }
 }

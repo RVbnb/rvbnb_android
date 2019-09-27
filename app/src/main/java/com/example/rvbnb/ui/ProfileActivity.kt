@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.rvbnb.R
+import com.example.rvbnb.repo.App
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_profile.*
 
@@ -42,5 +43,10 @@ class ProfileActivity : AppCompatActivity() {
             photoUri = uri
             profile_picture.setImageURI(uri)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        App.savePreferences()
     }
 }

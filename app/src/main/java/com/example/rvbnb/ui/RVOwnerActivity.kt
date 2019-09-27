@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.rvbnb.R
 import com.example.rvbnb.adapter.PlacesAdapter
 import com.example.rvbnb.model.Land
+import com.example.rvbnb.repo.App
 import com.example.rvbnb.repo.LoginRepo
 import com.example.rvbnb.retro.RvApi
 import kotlinx.android.synthetic.main.activity_rvowner.*
@@ -103,5 +104,10 @@ class RVOwnerActivity : AppCompatActivity(),/*Callback<Land>,*/  LoginRepo.GetLa
             intent.putExtra("LAND_ENTRY_ID", land.id)
             startActivity(viewListingIntent)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        App.savePreferences()
     }
 }
