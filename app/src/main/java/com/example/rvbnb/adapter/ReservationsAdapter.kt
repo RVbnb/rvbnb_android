@@ -37,6 +37,8 @@ class ReservationsAdapter(private val reservations: MutableList<Reservation>):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val reservation = reservations[position]
+
+//        color changes on reservations when clicked. Last selection is selected item.
         holder.content.setBackgroundColor(ContextCompat.getColor(context, android.R.color.background_light))
 
         holder.content.setOnClickListener {

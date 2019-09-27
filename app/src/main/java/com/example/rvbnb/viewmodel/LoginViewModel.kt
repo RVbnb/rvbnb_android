@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModel
 import com.example.rvbnb.repo.LoginRepo
 import com.example.rvbnb.ui.LandownerActivity
 import com.example.rvbnb.ui.RVOwnerActivity
-import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginViewModel(private val context: Context): ViewModel() {
 

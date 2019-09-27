@@ -2,7 +2,6 @@ package com.example.rvbnb.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -55,6 +54,8 @@ class PlacesAdapter(private val listPlaces: MutableList<Land>): RecyclerView.Ada
             Log.i("BadStuff", "Yep")
         }
 
+//        sets intents of which activities to go to when land is selected and sends
+//        land object to the respective detail activities
         holder.card.setOnClickListener {
             lateinit var intent: Intent
             if (context is RVOwnerActivity){

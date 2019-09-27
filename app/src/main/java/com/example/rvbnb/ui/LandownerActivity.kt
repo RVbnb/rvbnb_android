@@ -11,9 +11,6 @@ import com.example.rvbnb.model.Land
 import com.example.rvbnb.repo.App
 import com.example.rvbnb.repo.LoginRepo
 import kotlinx.android.synthetic.main.activity_landowner.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class LandownerActivity : AppCompatActivity()/*, Callback<Land>*/, LoginRepo.GetLandListCallback {
 
@@ -43,6 +40,8 @@ class LandownerActivity : AppCompatActivity()/*, Callback<Land>*/, LoginRepo.Get
         setContentView(R.layout.activity_landowner)
         title = "Landowner"
 
+        rv_places_item.adapter?.notifyDataSetChanged()
+
         val loginRepo = LoginRepo(this)
         loginRepo.retrieveLandList()
 
@@ -65,6 +64,8 @@ class LandownerActivity : AppCompatActivity()/*, Callback<Land>*/, LoginRepo.Get
         }
     }
 
+
+    //    enables our ids to increment each time the app adds land or reservations
     override fun onDestroy() {
         super.onDestroy()
         App.savePreferences()

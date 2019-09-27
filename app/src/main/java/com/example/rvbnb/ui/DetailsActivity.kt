@@ -1,9 +1,6 @@
 package com.example.rvbnb.ui
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.BitmapFactory
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,11 +15,9 @@ import com.example.rvbnb.repo.App
 import com.example.rvbnb.retro.RvApiInstance
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_details.*
-import kotlinx.android.synthetic.main.activity_details_rvowner.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.InputStream
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -38,6 +33,7 @@ class DetailsActivity : AppCompatActivity() {
         //et_listing_availability_details.setText(displayLand.)
         et_listing_description_details.setText(displayLand.description)
         et_listing_price_details.setText(displayLand.price_per_day.toString())
+        et_listing_url_details.setText(displayLand.photo)
 
 //        var urlString = "https://scx1.b-cdn.net/csz/news/800/2018/3-ocean.jpg"
 
@@ -112,6 +108,8 @@ class DetailsActivity : AppCompatActivity() {
         }
     }
 
+
+    //    enables our ids to increment each time the app adds land or reservations
     override fun onDestroy() {
         super.onDestroy()
         App.savePreferences()

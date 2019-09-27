@@ -5,22 +5,17 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rvbnb.R
 import com.example.rvbnb.adapter.PlacesAdapter
 import com.example.rvbnb.model.Land
-import com.example.rvbnb.repo.AddLandAsync
 import com.example.rvbnb.repo.App
 import com.example.rvbnb.repo.BuildAsyncTask
 import com.example.rvbnb.repo.LoginRepo
 import com.example.rvbnb.retro.RvApi
 import kotlinx.android.synthetic.main.activity_rvowner.*
 import kotlinx.android.synthetic.main.places_item.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class RVOwnerActivity : AppCompatActivity(), LoginRepo.GetLandListCallback, BuildAsyncTask.CreateLandList {
 
@@ -106,6 +101,8 @@ class RVOwnerActivity : AppCompatActivity(), LoginRepo.GetLandListCallback, Buil
         }
     }
 
+
+    //    enables our ids to increment each time the app adds land or reservations
     override fun onDestroy() {
         super.onDestroy()
         App.savePreferences()

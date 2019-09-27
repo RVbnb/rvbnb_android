@@ -1,7 +1,6 @@
 package com.example.rvbnb.ui
 
 import android.app.DatePickerDialog
-import android.content.Intent
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -127,6 +126,8 @@ class DetailsRVOwnerActivity : AppCompatActivity() {
             })
     }
 
+
+    //    enables our ids to increment each time the app adds land or reservations
     override fun onDestroy() {
         super.onDestroy()
         App.savePreferences()

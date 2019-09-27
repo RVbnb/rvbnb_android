@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.rvbnb.R
 import com.example.rvbnb.repo.App
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_profile.*
 
 class ProfileActivity : AppCompatActivity() {
@@ -45,6 +44,8 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
+
+    //    enables our ids to increment each time the app adds land or reservations
     override fun onDestroy() {
         super.onDestroy()
         App.savePreferences()
