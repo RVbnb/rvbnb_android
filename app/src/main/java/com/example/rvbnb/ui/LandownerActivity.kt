@@ -14,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LandownerActivity : AppCompatActivity(), Callback<Land>, LoginRepo.GetLandListCallback {
+class LandownerActivity : AppCompatActivity()/*, Callback<Land>*/, LoginRepo.GetLandListCallback {
 
     // Gets listings
     override fun getList(mutableList: MutableList<Land>) {
@@ -29,13 +29,13 @@ class LandownerActivity : AppCompatActivity(), Callback<Land>, LoginRepo.GetLand
         rv_places_item.adapter = PlacesAdapter(list)
     }
 
-    override fun onFailure(call: Call<Land>, t: Throwable) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onResponse(call: Call<Land>, response: Response<Land>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+//    override fun onFailure(call: Call<Land>, t: Throwable) {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//    }
+//
+//    override fun onResponse(call: Call<Land>, response: Response<Land>) {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
