@@ -47,10 +47,11 @@ class RVOwnerActivity : AppCompatActivity(),/*Callback<Land>,*/  LoginRepo.GetLa
 
     // Gets Land from SQL CRUD(persistence, internal storage)
     override fun getLandList(landList: MutableList<Land>) {
-        if(!isConnectionUp()){
-            recyclerSetup(landList)
-            landToSearch = landList
-        }
+        recyclerSetup(landList)
+        landToSearch = landList
+//        if(!isConnectionUp()){
+//
+//        }
     }
 
     private fun recyclerSetup(list: MutableList<Land>){

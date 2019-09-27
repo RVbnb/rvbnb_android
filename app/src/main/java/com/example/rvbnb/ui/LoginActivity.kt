@@ -1,6 +1,8 @@
 package com.example.rvbnb.ui
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
@@ -17,6 +19,12 @@ class LoginActivity : AppCompatActivity(), LoginRepo.LoginResponseCallback {
 
     companion object{
         lateinit var tokenAndId: AcceptResponse
+    }
+
+    fun isConnectionUp(): Boolean{
+        val connectManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkConnection = connectManager.activeNetworkInfo
+        return networkConnection.isConnected
     }
 
     override fun getAcceptResponse(acceptResponse: AcceptResponse) {
@@ -51,6 +59,18 @@ class LoginActivity : AppCompatActivity(), LoginRepo.LoginResponseCallback {
         // When user clicks on Log-In button with valid credentials, it will take user to Homepage.
         btn_login.setOnClickListener {
             loginViewModel.login(et_username.text.toString(), et_password.text.toString(), cb_landowner.isChecked)
+
+
+//            val intent = Intent(this, RVOwnerActivity::class.java)
+//            startActivity(intent)
+//            if (!isConnectionUp()){
+//                if (cb_landowner.isChecked){
+//                    val intent = Intent(this, LandownerActivity::class.java)
+//                    startActivity(intent)
+//                }else{
+//
+//                }
+//            }
         }
 
         // When user clicks on Register button it will take user to Registration Page.
