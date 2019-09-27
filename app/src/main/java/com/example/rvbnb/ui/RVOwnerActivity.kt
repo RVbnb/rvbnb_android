@@ -82,7 +82,8 @@ class RVOwnerActivity : AppCompatActivity(), LoginRepo.GetLandListCallback, Buil
             startActivity(logoutIntent)
         }
 
-        BuildAsyncTask(this).execute()
+        //Offline feature
+        //BuildAsyncTask(this).execute()
 
         iv_search_rv.setOnClickListener{
             val userSearch = et_search.text.toString()
