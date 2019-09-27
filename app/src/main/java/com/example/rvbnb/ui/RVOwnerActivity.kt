@@ -22,7 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RVOwnerActivity : AppCompatActivity(),/*Callback<Land>,*/  LoginRepo.GetLandListCallback, BuildAsyncTask.CreateLandList {
+class RVOwnerActivity : AppCompatActivity(), LoginRepo.GetLandListCallback, BuildAsyncTask.CreateLandList {
 
     lateinit var rvApi: RvApi
 
@@ -39,9 +39,10 @@ class RVOwnerActivity : AppCompatActivity(),/*Callback<Land>,*/  LoginRepo.GetLa
         if (isConnectionUp()){
             recyclerSetup(mutableList)
             landToSearch = mutableList
-            mutableList.forEach {
-                AddLandAsync(it).execute()
-            }
+            //This is for the purpose of saving the data for offline usage.
+//            mutableList.forEach {
+//                AddLandAsync(it).execute()
+//            }
         }
     }
 
@@ -60,26 +61,6 @@ class RVOwnerActivity : AppCompatActivity(),/*Callback<Land>,*/  LoginRepo.GetLa
         recycler_rv.layoutManager = manager
         recycler_rv.adapter = PlacesAdapter(list)
     }
-
-//    override fun onFailure(call: Call<Land>, t: Throwable) {
-//        t.printStackTrace()
-//        val response = "Failure; ${t.printStackTrace()}"
-//        Toast.makeText(this@RVOwnerActivity, response, Toast.LENGTH_SHORT).show()
-//    }
-//
-//    override fun onResponse(call: Call<Land>, response: Response<Land>) {
-//        if (response.isSuccessful) {
-//
-//        } else {
-//            val response = "Response not succuessful; ${response.errorBody().toString()}"
-//            Toast.makeText(this@RVOwnerActivity, response, Toast.LENGTH_SHORT).show()
-//        }
-//    }
-
-    // TODO: Need to figure out how to incorporate the token here? Do you need the token to do a search?
-//    private fun searchLand(token: String) {
-//        rvApi.getLands(token, )
-//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,13 +94,6 @@ class RVOwnerActivity : AppCompatActivity(),/*Callback<Land>,*/  LoginRepo.GetLa
             }
             recyclerSetup(mySearchList)
         }
-
-        // When user clicks on Search Button, it will populate listings based on search.
-        // TODO: Need to fix fun searchLand for this to work
-//        iv_search_rv.setOnClickListener {
-//            val searchText = et_search.text.toString()
-//            searchLand(searchText)
-//        }
     }
 
     // TODO: Need to add function to click on cardview to see details of the land.
